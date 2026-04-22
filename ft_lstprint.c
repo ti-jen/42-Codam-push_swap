@@ -17,7 +17,7 @@ void ft_lstprint(lst_ab *A, lst_ab* B)
 		if (B)
 		{
 			printf("\033[33m%i\033[0m|%d", B->id, B->content);
-			B = B->content;
+			B = B->next;
 		}
 		printf("\n");
 	}

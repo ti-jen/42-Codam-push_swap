@@ -20,18 +20,16 @@ test: lib
 	@echo "$(GREEN)Test output:$(WHITE)"
 	@$(CC) $(CFLAGS) main.c -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./a.out $(INPUT) && rm a.out && make fclean
 
-lib: comp libft ft_printf
+lib: comp ft_lib
 	@ar rcs $(NAME).a $(OBJ)
 	@echo "$(YELLOW)[compiling push_swap]$(WHITE)"
 
-comp:
+comp: 
 	@$(CC) $(CFLAGS) -c $(SRCS)
 
-libft:
+ft_lib:
 	@cd libft/ && make all
 	@echo "$(YELLOW)[compiling libft]$(WHITE)"
-
-ft_printf:
 	@cd libft/ft_printf/ && make all
 	@echo "$(YELLOW)[compiling ft_printf]$(WHITE)"
 
