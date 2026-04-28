@@ -6,56 +6,72 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:25 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/22 13:15:27 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/28 18:10:32 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-# include "lib_push_swap.h"
-# include "libft/ft_printf/ft_printf.h"
+#include "lib_push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
+#include <stdbool.h>
 
-void	fixId(lst_ab *A)
+void	fix_id(t_ab *lst)
 {
-	int i;
+	int	i;
 
-	if(!A)
-		return;
+	if (!lst)
+		return ;
 	i = 0;
-	A->id = i;
-	while(A->next)
+	lst->id = i;
+	while (lst->next)
 	{
-		A = A->next;
+		lst = lst->next;
 		i++;
-		A->id = i;
+		lst->id = i;
 	}
 }
 
-static void push (lst_ab **A,	lst_ab **B)
+static void	push(t_ab **lst_a,	t_ab **lst_b)
 {
-	lst_ab *temp;
+	t_ab	*temp;
 
-	if (!*A)
+	if (!*lst_a)
 		return ;
-	temp = *B;
-	*B = *A;
-	*A = (*A) ->next;
+	temp = *lst_b;
+	*lst_b = *lst_a;
+	*lst_a = (*lst_a)->next;
+	if (*lst_a)
+		(*lst_a)->prev = NULL;
 	if (temp)
-		(*B) ->next = temp;
+	{
+		(*lst_b)->next = temp;
+		temp ->prev = NULL;
+	}
 	else
-		(*B) ->next = NULL;
-	fixId(*B);
-	fixId(*A);
+		(*lst_b)->next = NULL;
+	fix_id(*lst_b);
+	fix_id(*lst_a);
 	return ;
 }
 
-void push_a (lst_ab **A,	lst_ab **B)
+int	push_a(t_ab **lst_a, t_ab **lst_b, bool bench)
 {
-	push(A,B);
-	ft_printf("pa\n");
+	static int	count = 0;
+
+	push(lst_a, lst_b);
+	count++;
+	if (!bench)
+		ft_printf("pa\n");
+	return (count);
 }
 
-void push_b (lst_ab **A,	lst_ab **B)
+int	push_b(t_ab **lst_a, t_ab **lst_b, bool bench)
 {
-	push(B,A);
-	ft_printf("pb\n");
+	static int	count = 0;
+
+	push(lst_a, lst_b);
+	count++;
+	if (!bench)
+		ft_printf("pb\n");
+	return (count);
 }

@@ -6,45 +6,58 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:45 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/22 13:15:47 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/28 18:07:12 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-# include "lib_push_swap.h"
-# include "libft/ft_printf/ft_printf.h"
+#include <stdbool.h>
+#include "lib_push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
 
-static void swap (lst_ab **A)
+static void	swap(t_ab **lst)
 {
-	lst_ab *temp;
-	int save;
+	t_ab	*temp;
+	int		save;
 
-	if (!*A || !(*A) -> next)
+	if (!*lst || !(*lst)->next)
 		return ;
-	temp = (*A)-> next;
-	save = (*A)-> content;
-	(*A)-> content = temp->content;
+	temp = (*lst)-> next;
+	save = (*lst)-> content;
+	(*lst)-> content = temp->content;
 	temp->content = save;
 }
 
-void swap_a (lst_ab **A)
+int	swap_a(t_ab **lst_a, bool bench)
 {
-	swap(A);
-	ft_printf("sa\n");
-	return ;
+	static int	count = 0;
+
+	swap(lst_a);
+	count++;
+	if (!bench)
+		ft_printf("sa\n");
+	return (count);
 }
 
-void swap_b (lst_ab **B)
+int	swap_b(t_ab **lst_b, bool bench)
 {
-	swap(B);
-	ft_printf("sb\n");
-	return ;
+	static int	count = 0;
+
+	swap(lst_b);
+	count++;
+	if (!bench)
+		ft_printf("sb\n");
+	return (count);
 }
 
-void swap_ab (lst_ab **A, lst_ab **B)
+int	swap_ab(t_ab **lst_a, t_ab **lst_b, bool bench)
 {
-	swap(A);
-	swap(B);
-	ft_printf("ss\n");
-	return ;
+	static int	count = 0;
+
+	swap(lst_a);
+	swap(lst_b);
+	count++;
+	if (!bench)
+		ft_printf("ss\n");
+	return (count);
 }

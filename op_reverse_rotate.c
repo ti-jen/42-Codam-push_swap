@@ -6,43 +6,61 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:32 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/22 13:15:34 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/28 18:10:36 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-# include "lib_push_swap.h"
-# include "libft/ft_printf/ft_printf.h"
+#include <stdbool.h>
+#include "lib_push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
 
-static void	reverse_rotate (lst_ab **A)
+static void	reverse_rotate(t_ab **lst_a)
 {
-	lst_ab *temp;
-	temp = *A;
+	t_ab	*temp;
 
-	while((*A)->next)
-		*A = (*A)->next;
-	(*A)->next = temp;
-	temp = (*A)->prev;
-	(*A)->prev = NULL;
+	if (!(*lst_a) || !(*lst_a)->next)
+		return ;
+	temp = *lst_a;
+	while ((*lst_a)->next)
+		*lst_a = (*lst_a)->next;
+	(*lst_a)->next = temp;
+	temp = (*lst_a)->prev;
 	temp->next = NULL;
-	fixId(*A);
+	(*lst_a)->prev = NULL;
+	fix_id (*lst_a);
 }
 
-void reverse_rotate_a (lst_ab **A)
+int	reverse_rotate_a(t_ab **lst_a, bool bench)
 {
-	reverse_rotate(A);
-	ft_printf("rra\n");
+	static int	count = 0;
+
+	reverse_rotate(lst_a);
+	count++;
+	if (!bench)
+		ft_printf("rra\n");
+	return (count);
 }
 
-void reverse_rotate_b (lst_ab **A)
+int	reverse_rotate_b(t_ab **lst_a, bool bench)
 {
-	reverse_rotate(A);
-	ft_printf("rrb\n");
+	static int	count = 0;
+
+	reverse_rotate(lst_a);
+	count++;
+	if (!bench)
+		ft_printf("rrb\n");
+	return (count);
 }
 
-void reverse_rotate_ab (lst_ab **A, lst_ab **B)
+int	reverse_rotate_ab(t_ab **lst_a, t_ab **lst_b, bool bench)
 {
-	reverse_rotate(A);
-	reverse_rotate(B);
-	ft_printf("rrr\n");
+	static int	count = 0;
+
+	reverse_rotate(lst_a);
+	reverse_rotate(lst_b);
+	count++;
+	if (!bench)
+		ft_printf("rrr\n");
+	return (count);
 }

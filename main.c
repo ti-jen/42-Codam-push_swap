@@ -6,56 +6,84 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/22 14:06:28 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/28 18:07:43 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-# include "libft/libft.h"
-# include "lib_push_swap.h"
+#include <stdbool.h>
+#include "libft/libft.h"
+#include "lib_push_swap.h"
 
-void	ft_intadd_back(lst_ab **lst, int content)
+double	compute_disorder(t_ab *lst)
 {
-	lst_ab *temp;
-	lst_ab *new;
-	static int i = 0;
-	temp = *lst;
+	double	mistakes;
+	double	total_pairs;
+	t_ab	*temp;
 
-	new = (lst_ab *)malloc(sizeof(lst_ab));
-	new->content = content;
-	new->id = i;
-	new->prev = NULL;
-	new->next = NULL;
-	i++;
-	if (!temp)
-		*lst = new;
-	else
+	mistakes = 0;
+	total_pairs = 0;
+	while (lst->next)
 	{
-		while (temp-> next)
+		temp = lst->next;
+		while (temp)
 		{
-			temp = temp-> next;
+			if (lst->content > temp->content)
+				mistakes++;
+			total_pairs++;
+			temp = temp->next;
 		}
-		new->prev = temp;
-		temp->next = new;
+		lst = lst->next;
 	}
+	return (mistakes / total_pairs);
 }
 
-int main(int argc, char* argv[])
+int	main(int argc, char *argv[])
 {
-	lst_ab *A = NULL;
-	lst_ab *B = NULL;
-	int i = 1;
-	while((argc) > i)
+	t_ab	*lst_a;
+	bool	bench;
+	int		i;
+	int		algorithm;
+
+	algorithm = 0;
+	i = 1;
+	bench = false;
+	lst_a = NULL;
+	if (!ft_strncmp(argv[i], "--bench", 10))
 	{
-		ft_intadd_back(&A, ft_atoi(argv[i]));
+		bench = true;
 		i++;
 	}
-	// push_a(&A, &B);
-	push_a(&A, &B);
-	push_a(&A, &B);
-	push_b(&A, &B);
-	ft_lstprint(A, B);
-	// // ft_sort(&A, &B);
-	// ft_lstprint(A, B);
+	if (!ft_strncmp(argv[i], "--", 2))
+	{
+		if (!ft_strncmp(argv[i], "--simple", 10))
+			algorithm = 1;
+		else if (!ft_strncmp(argv[i], "--medium", 10))
+			algorithm = 2;
+		else if (!ft_strncmp(argv[i], "--complex", 10))
+			algorithm = 3;
+		else if (ft_strncmp(argv[i], "--adaptive", 10))
+		{
+			printf("Error\n");
+			return (0);
+		}
+		i++;
+	}
+	lst_a = ft_make_lst(i, argc, argv);
+	if (bench)
+	{
+		printf("[bench] disorder:	%f%%\n", compute_disorder(lst_a));
+		printf("[bench] strategy:	%i\n", algorithm);
+	}
+	ft_lstprint(lst_a, NULL);
 }
+	// if (bench)
+	// {
+	// 	printf("[bench] total_ops:	%i\n", (swap_a(&A, bench) + swap_b(&B, bench) + swap_ab(&A, &B, bench) + push_a(&A, &B, bench) + push_b(&A, &B, bench) +
+	// 		rotate_a(&A, bench) + rotate_b(&B, bench) + rotate_ab(&A, &B, bench) + reverse_rotate_a(&A, bench) + reverse_rotate_b(&B, bench) + reverse_rotate_ab(&A, &B, bench)) - 11);
+	// 	printf("[bench]	sa:	%i	sb:	%i	ss:	%i	", (swap_a(&A, bench) - 2), (swap_b(&A, bench) - 2), (swap_ab(&A, &B,bench) - 2));
+	// 	printf("pa:	%i	pb:	%i\n", (push_a(&A, &B,bench) - 2), (push_b(&A, &B,bench) - 2));
+	// 	printf("[bench]	ra:	%i	rb:	%i	rr:	%i	", (rotate_a(&A, bench) - 2), (rotate_b(&B, bench) - 2), (rotate_ab(&A, &B, bench) - 2));
+	// 	printf("rra:	%i	rrb:	%i	rrr:	%i\n", (reverse_rotate_a(&A, bench) - 2), (reverse_rotate_b(&B, bench) - 2), (reverse_rotate_ab(&A, &B, bench) - 2));
+	// }
