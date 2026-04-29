@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/28 18:13:31 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 12:19:46 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		rotate_ab(t_ab **A, t_ab **B, bool bench);
 int		reverse_rotate_a(t_ab **A, bool bench);
 int		reverse_rotate_b(t_ab **A, bool bench);
 int		reverse_rotate_ab(t_ab **A, t_ab **B, bool bench);
+void	ft_print_bench	(int algorithm, double dis);
 
 void	ft_lstprint(t_ab *A, t_ab *B);

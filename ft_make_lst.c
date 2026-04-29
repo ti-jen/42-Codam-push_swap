@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/28 18:08:27 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 11:37:40 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdbool.h>
 #include "libft/libft.h"
 #include "lib_push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
 
 void	ft_intadd_back(t_ab **lst, int content)
 {
@@ -68,11 +69,10 @@ t_ab	*ft_make_lst(int i, int argc, char **argv)
 		while (split[j])
 		{
 			content = ft_atoi(split[j]);
-			if (ft_lst_check_doubles(t_ab, content)
-				|| (content == 0 && split[i][0] != '0'))
+			if ((content == 0 && split[j][0] != '0') || (ft_lst_check_doubles(t_ab, content)))
 			{
-				printf("Error\n");
-				return (0);
+				ft_printf("Error\n");
+				return (NULL);
 			}
 			ft_intadd_back(&t_ab, content);
 			j++;

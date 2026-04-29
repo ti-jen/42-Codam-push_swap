@@ -7,6 +7,7 @@ op_reverse_rotate\
 op_swap\
 ft_lstprint\
 ft_make_lst\
+ft_print_bench\
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJ	= $(addsuffix .o, $(SRC))

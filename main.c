@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/28 18:07:43 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 16:19:00 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 #include <stdbool.h>
 #include "libft/libft.h"
 #include "lib_push_swap.h"
+#include "libft/ft_printf/ft_printf.h"
 
-double	compute_disorder(t_ab *lst)
+float	compute_disorder(t_ab *lst)
 {
-	double	mistakes;
-	double	total_pairs;
+	float	mistakes;
+	float	total_pairs;
 	t_ab	*temp;
 
 	mistakes = 0;
@@ -36,7 +37,45 @@ double	compute_disorder(t_ab *lst)
 		}
 		lst = lst->next;
 	}
-	return (mistakes / total_pairs);
+	return ((mistakes / total_pairs) + 0.00005);
+}
+
+int	check_mode(char *argv)
+{
+	if (!ft_strncmp(argv, "--simple", 10))
+		return (1);
+	else if (!ft_strncmp(argv, "--medium", 10))
+		return (2);
+	else if (!ft_strncmp(argv, "--complex", 10))
+		return (3);
+	else if (!ft_strncmp(argv, "--adaptive", 10))
+		return (4);
+	return (0);
+}
+
+void	sort_lst(t_ab *lst, int algorithm, float dis)
+{
+	if (algorithm == 4)
+	{
+		if (dis < 0.2)
+			algorithm = 1;
+		else if (dis > 0.2 && dis < 0.5)
+			algorithm = 2;
+		else
+			algorithm = 3;
+	}
+	if (algorithm == 1)
+	{
+		ft_printf("\n", lst->content);
+	}
+	else if (algorithm == 2)
+	{
+		ft_printf("\n");
+	}
+	else
+	{
+		ft_printf("\n");
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -46,7 +85,7 @@ int	main(int argc, char *argv[])
 	int		i;
 	int		algorithm;
 
-	algorithm = 0;
+	algorithm = 4;
 	i = 1;
 	bench = false;
 	lst_a = NULL;
@@ -55,15 +94,10 @@ int	main(int argc, char *argv[])
 		bench = true;
 		i++;
 	}
-	if (!ft_strncmp(argv[i], "--", 2))
+	if (!ft_strncmp(argv[i], "--", 1))
 	{
-		if (!ft_strncmp(argv[i], "--simple", 10))
-			algorithm = 1;
-		else if (!ft_strncmp(argv[i], "--medium", 10))
-			algorithm = 2;
-		else if (!ft_strncmp(argv[i], "--complex", 10))
-			algorithm = 3;
-		else if (ft_strncmp(argv[i], "--adaptive", 10))
+		algorithm = check_mode(argv[i]);
+		if (algorithm == 0)
 		{
 			printf("Error\n");
 			return (0);
@@ -71,19 +105,10 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	lst_a = ft_make_lst(i, argc, argv);
+	if (lst_a == NULL)
+		return (0);
 	if (bench)
-	{
-		printf("[bench] disorder:	%f%%\n", compute_disorder(lst_a));
-		printf("[bench] strategy:	%i\n", algorithm);
-	}
+		ft_print_bench(algorithm, (compute_disorder(lst_a)));
+	sort_lst(lst_a, algorithm, compute_disorder(lst_a));
 	ft_lstprint(lst_a, NULL);
 }
-	// if (bench)
-	// {
-	// 	printf("[bench] total_ops:	%i\n", (swap_a(&A, bench) + swap_b(&B, bench) + swap_ab(&A, &B, bench) + push_a(&A, &B, bench) + push_b(&A, &B, bench) +
-	// 		rotate_a(&A, bench) + rotate_b(&B, bench) + rotate_ab(&A, &B, bench) + reverse_rotate_a(&A, bench) + reverse_rotate_b(&B, bench) + reverse_rotate_ab(&A, &B, bench)) - 11);
-	// 	printf("[bench]	sa:	%i	sb:	%i	ss:	%i	", (swap_a(&A, bench) - 2), (swap_b(&A, bench) - 2), (swap_ab(&A, &B,bench) - 2));
-	// 	printf("pa:	%i	pb:	%i\n", (push_a(&A, &B,bench) - 2), (push_b(&A, &B,bench) - 2));
-	// 	printf("[bench]	ra:	%i	rb:	%i	rr:	%i	", (rotate_a(&A, bench) - 2), (rotate_b(&B, bench) - 2), (rotate_ab(&A, &B, bench) - 2));
-	// 	printf("rra:	%i	rrb:	%i	rrr:	%i\n", (reverse_rotate_a(&A, bench) - 2), (reverse_rotate_b(&B, bench) - 2), (reverse_rotate_ab(&A, &B, bench) - 2));
-	// }

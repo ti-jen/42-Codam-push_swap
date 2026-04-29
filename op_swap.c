@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:45 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/28 18:07:12 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 13:59:50 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	swap(t_ab **lst)
 	t_ab	*temp;
 	int		save;
 
-	if (!*lst || !(*lst)->next)
+	if (!lst || !*lst || !(*lst)->next)
 		return ;
 	temp = (*lst)-> next;
 	save = (*lst)-> content;
