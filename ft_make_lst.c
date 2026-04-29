@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 11:37:40 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 17:24:47 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ t_ab	*ft_make_lst(int i, int argc, char **argv)
 		while (split[j])
 		{
 			content = ft_atoi(split[j]);
-			if ((content == 0 && split[j][0] != '0') || (ft_lst_check_doubles(t_ab, content)))
+			if ((content == 0 && split[j][0] != '0')
+			|| (ft_lst_check_doubles(t_ab, content)))
 			{
 				ft_printf("Error\n");
 				return (NULL);
