@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 17:24:47 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 18:16:24 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	ft_intadd_back(t_ab **lst, int content)
 
 	temp = *lst;
 	new = (t_ab *)malloc(sizeof(t_ab));
+	if (!new)
+		return ;
 	new->content = content;
 	new->id = i;
 	new->prev = NULL;
@@ -54,31 +56,48 @@ int	ft_lst_check_doubles(t_ab *lst, int content)
 	return (0);
 }
 
-t_ab	*ft_make_lst(int i, int argc, char **argv)
+void	free_all(t_ab *lst, char **split, int j)
 {
-	t_ab				*t_ab;
+	t_ab	*temp;
+
+	while (lst)
+	{
+		temp = lst;
+		lst = lst->next;
+		free(temp);
+	}
+	while (split[j])
+	{
+		free(split[j]);
+		j++;
+	}
+	free(split);
+}
+
+void	ft_make_lst(t_ab **lst, int i, int argc, char **argv)
+{
 	char				**split;
 	int					content;
 	long unsigned int	j;
 
-	t_ab = NULL;
 	while ((argc) > i)
 	{
-		split = ft_split(argv[i], ' ');
+		split = ft_split(argv[i++], ' ');
 		j = 0;
 		while (split[j])
 		{
 			content = ft_atoi(split[j]);
 			if ((content == 0 && split[j][0] != '0')
-			|| (ft_lst_check_doubles(t_ab, content)))
+			|| (ft_lst_check_doubles(*lst, content)))
 			{
 				ft_printf("Error\n");
-				return (NULL);
+				free_all(*lst, split, j);
+				*lst = NULL;
+				return ;
 			}
-			ft_intadd_back(&t_ab, content);
-			j++;
+			free(split[j++]);
+			ft_intadd_back(lst, content);
 		}
-		i++;
+		free(split);
 	}
-	return (t_ab);
 }

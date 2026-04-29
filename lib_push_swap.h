@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 17:25:17 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 18:07:27 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct int_list
 }	t_ab;
 
 void	fix_id(t_ab *A);
-t_ab	*ft_make_lst(int i, int argc, char **argv);
+void	ft_make_lst(t_ab **lst, int i, int argc, char **argv);
 int		swap_a(t_ab **A, bool bench);
 int		swap_b(t_ab **A, bool bench);
 int		swap_ab(t_ab **A, t_ab **B, bool bench);

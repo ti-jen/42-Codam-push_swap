@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 16:47:57 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 18:04:08 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int argc, char *argv[])
 			return (0);
 		i++;
 	}
-	lst_a = ft_make_lst(i, argc, argv);
+	ft_make_lst(&lst_a, i, argc, argv);
 	if (lst_a == NULL)
 		return (0);
 	sort_lst(lst_a, algorithm, compute_disorder(lst_a), bench);
