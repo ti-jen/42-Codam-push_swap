@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 18:04:08 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 18:40:03 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_mode(char *argv)
 		return (3);
 	else if (!ft_strncmp(argv, "--adaptive", 10))
 		return (4);
-	printf("Error\n");
+	printf("Error: Invalid flags\n");
 	return (0);
 }
 
@@ -91,16 +91,16 @@ int	main(int argc, char *argv[])
 	i = 1;
 	bench = false;
 	lst_a = NULL;
-	if (!ft_strncmp(argv[i], "--bench", 10))
+	while (!ft_strncmp(argv[i], "--", 1))
 	{
-		bench = true;
-		i++;
-	}
-	if (!ft_strncmp(argv[i], "--", 1))
-	{
-		algorithm = check_mode(argv[i]);
-		if (algorithm == 0)
-			return (0);
+		if (!ft_strncmp(argv[i], "--bench", 10))
+			bench = true;
+		else
+		{
+			algorithm = check_mode(argv[i]);
+			if (algorithm == 0)
+				return (0);
+		}
 		i++;
 	}
 	ft_make_lst(&lst_a, i, argc, argv);

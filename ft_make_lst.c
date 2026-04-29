@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 18:16:24 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 18:23:07 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	ft_make_lst(t_ab **lst, int i, int argc, char **argv)
 			if ((content == 0 && split[j][0] != '0')
 			|| (ft_lst_check_doubles(*lst, content)))
 			{
-				ft_printf("Error\n");
+				ft_printf("Error: Invalid or Double Numbers\n");
 				free_all(*lst, split, j);
 				*lst = NULL;
 				return ;
