@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 16:19:00 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/29 16:47:57 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ int	check_mode(char *argv)
 		return (3);
 	else if (!ft_strncmp(argv, "--adaptive", 10))
 		return (4);
+	printf("Error\n");
 	return (0);
 }
 
-void	sort_lst(t_ab *lst, int algorithm, float dis)
+void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 {
+	ft_print_bench(algorithm, (compute_disorder(lst)), bench);
 	if (algorithm == 4)
 	{
 		if (dis < 0.2)
@@ -66,7 +68,7 @@ void	sort_lst(t_ab *lst, int algorithm, float dis)
 	}
 	if (algorithm == 1)
 	{
-		ft_printf("\n", lst->content);
+		ft_printf("\n");
 	}
 	else if (algorithm == 2)
 	{
@@ -98,17 +100,11 @@ int	main(int argc, char *argv[])
 	{
 		algorithm = check_mode(argv[i]);
 		if (algorithm == 0)
-		{
-			printf("Error\n");
 			return (0);
-		}
 		i++;
 	}
 	lst_a = ft_make_lst(i, argc, argv);
 	if (lst_a == NULL)
 		return (0);
-	if (bench)
-		ft_print_bench(algorithm, (compute_disorder(lst_a)));
-	sort_lst(lst_a, algorithm, compute_disorder(lst_a));
-	ft_lstprint(lst_a, NULL);
+	sort_lst(lst_a, algorithm, compute_disorder(lst_a), bench);
 }
