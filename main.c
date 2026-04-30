@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 18:40:03 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/30 17:18:24 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	check_mode(char *argv)
 
 void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 {
-	ft_print_bench(algorithm, (compute_disorder(lst)), bench);
+	float disorder;
+	disorder = (compute_disorder(lst));
 	if (algorithm == 4)
 	{
 		if (dis < 0.2)
@@ -72,12 +73,13 @@ void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 	}
 	else if (algorithm == 2)
 	{
-		ft_printf("\n");
+		ft_bucket_sort(lst,bench);
 	}
 	else
 	{
 		ft_printf("\n");
 	}
+	ft_print_bench(algorithm, disorder, bench);
 }
 
 int	main(int argc, char *argv[])
