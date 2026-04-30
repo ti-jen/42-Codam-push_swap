@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:32 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 14:26:07 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/30 17:51:32 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 static void	reverse_rotate(t_ab **lst_a)
 {
 	t_ab	*temp;
+	t_ab	*save;
 
 	if (!lst_a || !(*lst_a) || !(*lst_a)->next)
 		return ;
@@ -25,8 +26,10 @@ static void	reverse_rotate(t_ab **lst_a)
 	while ((*lst_a)->next)
 		*lst_a = (*lst_a)->next;
 	(*lst_a)->next = temp;
+	save = temp;
 	temp = (*lst_a)->prev;
 	temp->next = NULL;
+	save->prev = (*lst_a);
 	(*lst_a)->prev = NULL;
 	fix_id (*lst_a);
 }

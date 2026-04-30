@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:25 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 12:58:39 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/04/30 17:51:07 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	push(t_ab **lst_a,	t_ab **lst_b)
 	if (temp)
 	{
 		(*lst_b)->next = temp;
-		temp ->prev = NULL;
+		temp ->prev = (*lst_b);
 	}
 	else
 		(*lst_b)->next = NULL;
@@ -58,7 +58,7 @@ int	push_a(t_ab **lst_a, t_ab **lst_b, bool bench)
 {
 	static int	count = 0;
 
-	push(lst_a, lst_b);
+	push(lst_b, lst_a);
 	count++;
 	if (!bench)
 		ft_printf("pa\n");
