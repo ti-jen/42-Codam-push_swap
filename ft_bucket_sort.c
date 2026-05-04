@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/30 18:06:50 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/04 12:44:40 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,17 +105,23 @@ void bucket(t_ab *lst_a, bool bench)
 	int	scan;
 	int	max;
 	int	min;
+	int save;
 	lst_b = NULL;
 	max = 1;
 	min = 0;
 	
+	scan = 0;
 	temp = ft_find_higest(lst_a);
-	while(temp->content > max)
-		max = max * 10;
-	while(max)
+	max = temp->content;
+	while(max > 0)
 	{
-		min =  max / 10;
-		scan = ft_scan(lst_a, max, min);
+		min =  max;
+		while (scan < 10 && min >= 0)
+		{
+			min = min - 10;
+			scan = ft_scan(lst_a, max, min);
+		}
+		save = lst_a->content;
 		while(scan)
 		{
 			if(lst_a->content <= max && lst_a->content > min)
@@ -124,25 +130,18 @@ void bucket(t_ab *lst_a, bool bench)
 				scan--;
 			}
 			else
-				rotate_a(&lst_a, bench);
+				reverse_rotate_a(&lst_a, bench);
 		}
+		while (lst_a->content != save)
+			rotate_a(&lst_a, bench);
 		max = min;
 		if (lst_b)
 			sort(&lst_a, &lst_b, bench);
 	}
-	ft_lstprint(lst_a, lst_b);
+	// ft_lstprint(lst_a,lst_b);
 }
 
 void	ft_bucket_sort(t_ab *lst_a, bool bench)
 {
-	int size;
-	t_ab	*temp;
-	size = lstsize(lst_a);
-	temp = lst_a;
-	while(temp)
-	{
-		temp->content = temp->content * size;
-		temp = temp->next;
-	}
 	bucket(lst_a, bench);
 }
