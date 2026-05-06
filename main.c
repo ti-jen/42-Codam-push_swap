@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 12:54:31 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/06 16:18:45 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 	if (algorithm == 1)
 		ft_printf("\n");
 	else if (algorithm == 2)
-		ft_bucket_sort(lst, bench);
+		ft_bucket_sort(lst);
 	else
 		ft_printf("\n");
 	ft_print_bench(algorithm, disorder, bench);
@@ -99,5 +99,4 @@ int	main(int argc, char *argv[])
 	if (lst_a == NULL)
 		return (0);
 	sort_lst(lst_a, algorithm, compute_disorder(lst_a), bench);
-	// ft_lstprint(lst_a, NULL);
 }

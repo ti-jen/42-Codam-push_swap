@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:31:42 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:36:10 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_scan(t_ab *lst_a, int max, int min)
 	return (count);
 }
 
-void	sort_simple(t_ab **lst_a, t_ab **lst_b, bool bench)
+void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 {
 	int		maxid;
 	int		length;
@@ -42,19 +42,19 @@ void	sort_simple(t_ab **lst_a, t_ab **lst_b, bool bench)
 		if (maxid < (length / 2))
 		{
 			while (maxid--)
-				rotate_b(lst_b, bench);
+				rotate_b(lst_b);
 		}
 		else
 		{
 			while (maxid++ <= length)
-				reverse_rotate_b(lst_b, bench);
+				reverse_rotate_b(lst_b);
 		}
-		push_a(lst_a, lst_b, bench);
+		push_a(lst_a, lst_b);
 		length--;
 	}
 }
 
-int	sort_medium(t_ab **lst_a, t_ab **lst_b, bool bench, int max)
+int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 {
 	int		scan;
 	int		path;
@@ -74,17 +74,17 @@ int	sort_medium(t_ab **lst_a, t_ab **lst_b, bool bench, int max)
 		path = shortest_path(*lst_a, max, min);
 		if (path < 0)
 			while (path++ < 0)
-				reverse_rotate_op(lst_a, lst_b, bench);
+				reverse_rotate_a(lst_a);
 		else
 			while (path-- > 0)
-				rotate_op(lst_a, lst_b, bench);
-		push_b(lst_a, lst_b, bench);
+				rotate_a(lst_a);
+		push_b(lst_a, lst_b);
 		scan--;
 	}
 	return (min);
 }
 
-void	ft_bucket_sort(t_ab *lst_a, bool bench)
+void	ft_bucket_sort(t_ab *lst_a)
 {
 	t_ab	*lst_b;
 	int		max;
@@ -97,17 +97,17 @@ void	ft_bucket_sort(t_ab *lst_a, bool bench)
 	path = 0;
 	while (max > ft_find_lowest(lst_a)->content)
 	{
-		max = sort_medium(&lst_a, &lst_b, bench, max);
+		max = sort_medium(&lst_a, &lst_b, max);
 		if (!start)
 			path = shortest_path(lst_a, path, path - 1);
 		if (path < 0)
 			while (path++ < 0)
-				reverse_rotate_op(&lst_a, &lst_b, bench);
+				reverse_rotate_a(&lst_a);
 		else
 			while (path-- > 0)
-				rotate_op(&lst_a, &lst_b, bench);
+				rotate_a(&lst_a);
 		if (lst_b)
-			sort_simple(&lst_a, &lst_b, bench);
+			sort_simple(&lst_a, &lst_b);
 		path = (lst_a)->content;
 		start = false;
 		// ft_lstprint(lst_a, lst_b);

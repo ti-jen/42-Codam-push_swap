@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:25 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 12:54:45 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/06 16:20:13 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
+
+int	*store_push(int type)
+{
+	static int	array[2];
+	static int	pa = 0;
+	static int	pb = 0;
+
+	if (type == 1)
+	{
+		ft_printf("pa\n");
+		pa++;
+	}
+	else if (type == 2)
+	{
+		ft_printf("pb\n");
+		pb++;
+	}
+	array[0] = pa;
+	array[1] = pb;
+	return (array);
+}
 
 void	fix_id(t_ab *lst)
 {
@@ -51,24 +72,14 @@ static void	push(t_ab **lst_a,	t_ab **lst_b)
 	return ;
 }
 
-int	push_a(t_ab **lst_a, t_ab **lst_b, bool bench)
+void	push_a(t_ab **lst_a, t_ab **lst_b)
 {
-	static int	count = 0;
-
 	push(lst_b, lst_a);
-	count++;
-	if (!bench)
-		ft_printf("pa\n");
-	return (count);
+	store_push(1);
 }
 
-int	push_b(t_ab **lst_a, t_ab **lst_b, bool bench)
+void	push_b(t_ab **lst_a, t_ab **lst_b)
 {
-	static int	count = 0;
-
 	push(lst_a, lst_b);
-	count++;
-	if (!bench)
-		ft_printf("pb\n");
-	return (count);
+	store_push(2);
 }
