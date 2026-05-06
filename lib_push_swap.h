@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:35:35 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:58:19 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIB_PUSH_SWAP_H
 
 # include <stddef.h>
+# include <unistd.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>

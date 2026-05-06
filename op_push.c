@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:25 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:20:13 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:59:26 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	*store_push(int type)
 
 	if (type == 1)
 	{
-		ft_printf("pa\n");
+		write(1, "pa\n", 3);
 		pa++;
 	}
 	else if (type == 2)
 	{
-		ft_printf("pb\n");
+		write(1, "pb\n", 3);
 		pb++;
 	}
 	array[0] = pa;

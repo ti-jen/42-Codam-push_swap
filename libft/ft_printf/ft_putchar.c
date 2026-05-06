@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 10:04:49 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 14:02:10 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:53:42 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // function that writes the given character
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	write(2, &c, 1);
 	return (1);
 }
 

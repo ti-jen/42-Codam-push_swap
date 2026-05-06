@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 10:22:35 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/06 10:30:29 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:54:00 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_decthex(unsigned long adr)
 	}
 	temp = adr % 16;
 	temp = hex[temp];
-	write(1, &temp, 1);
+	write(2, &temp, 1);
 }
 
 int	ft_putadres(unsigned long adr)
@@ -36,8 +36,8 @@ int	ft_putadres(unsigned long adr)
 	if (!adr)
 		return (ft_putstr("(nil)"));
 	i = 2;
-	write(1, "0", 1);
-	write(1, "x", 1);
+	write(2, "0", 1);
+	write(2, "x", 1);
 	ft_decthex(adr);
 	while (adr >= 16)
 	{

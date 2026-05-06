@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:32 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:20:51 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:58:59 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	*store_rev_rotate(int type)
 
 	if (type == 1)
 	{
-		ft_printf("rra\n");
+		write(1, "rra\n", 4);
 		rra++;
 	}
 	else if (type == 2)
 	{
-		ft_printf("rrb\n");
+		write(1, "rrb\n", 4);
 		rrb++;
 	}
 	else if (type == 3)
 	{
-		ft_printf("rrr\n");
+		write(1, "rrb\n", 4);
 		rrr++;
 	}
 	array[0] = rra;

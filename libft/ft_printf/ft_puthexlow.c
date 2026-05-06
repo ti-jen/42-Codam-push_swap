@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:35:26 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/06 10:30:12 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:54:10 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	ft_decthex(unsigned int adr)
 	}
 	temp = adr % 16;
 	temp = hex[temp];
-	write(1, &temp, 1);
+	write(2, &temp, 1);
 }
 
 int	ft_puthexlow(unsigned int n)

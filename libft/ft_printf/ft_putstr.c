@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 15:52:54 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/01 10:03:57 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:54:15 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putstr(char *str)
 		return (ft_putstr("(null)"));
 	while (str[i] != 0)
 	{
-		write(1, &str[i], 1);
+		write(2, &str[i], 1);
 		++i;
 	}
 	return (i);
