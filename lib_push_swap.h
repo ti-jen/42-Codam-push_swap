@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 13:35:00 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/06 15:04:33 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,28 @@ typedef struct int_list
 
 void	fix_id(t_ab *A);
 void	ft_make_lst(t_ab **lst, int i, int argc, char **argv);
-int		swap_a(t_ab **A, bool bench);
-int		swap_b(t_ab **A, bool bench);
-int		swap_ab(t_ab **A, t_ab **B, bool bench);
-int		push_a(t_ab **A,	t_ab **B, bool bench);
-int		push_b(t_ab **A,	t_ab **B, bool bench);
-int		rotate_a(t_ab **A, bool bench);
-int		rotate_b(t_ab **A, bool bench);
-int		rotate_ab(t_ab **A, t_ab **B, bool bench);
-void	rotate_op(t_ab **lst_a, t_ab **lst_b, bool bench);
-int		reverse_rotate_a(t_ab **A, bool bench);
-int		reverse_rotate_b(t_ab **A, bool bench);
-int		reverse_rotate_ab(t_ab **A, t_ab **B, bool bench);
-void	reverse_rotate_op(t_ab **A, t_ab **B, bool bench);
+
+int		*store_swap(int type);
+void	swap_a(t_ab **A);
+void		swap_b(t_ab **A);
+void	swap_ab(t_ab **A, t_ab **B);
+
+int		*store_push(int type);
+void	push_a(t_ab **A,	t_ab **B);
+void	push_b(t_ab **A,	t_ab **B);
+
+int		*store_rotate(int type);
+void	rotate_a(t_ab **A);
+void	rotate_b(t_ab **A);
+void	rotate_ab(t_ab **A, t_ab **B);
+
+int		*store_rev_rotate(int type);
+void	reverse_rotate_a(t_ab **A);
+void	reverse_rotate_b(t_ab **A);
+void	reverse_rotate_ab(t_ab **A, t_ab **B);
+
 void	ft_print_bench(int algorithm, double dis, bool bench);
-void	ft_bucket_sort(t_ab *lst, bool bench);
+void	ft_bucket_sort(t_ab *lst);
 
 t_ab	*ft_find_higest(t_ab *lst_a);
 int		shortest_path(t_ab *lst_a, int max, int min);

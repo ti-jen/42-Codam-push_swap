@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:12:43 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 17:21:41 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:23:52 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,25 @@ void	print_algorithm(int algorithm, double dis)
 
 void	print_actions(void)
 {
+	int	l[11];
 	int	i;
 	int	total;
-	int	l[11];
 
-	i = 0;
 	total = 0;
-	l[0] = swap_a(NULL, true) - 1;
-	l[1] = swap_b(NULL, true) - 1;
-	l[2] = swap_ab(NULL, NULL, true) - 1;
-	l[3] = push_a(NULL, NULL, true) - 1;
-	l[4] = push_b(NULL, NULL, true) - 1;
-	l[5] = rotate_a(NULL, true) - 1;
-	l[6] = rotate_b(NULL, true) - 1;
-	l[7] = rotate_ab(NULL, NULL, true) - 1;
-	l[8] = reverse_rotate_a(NULL, true) - 1;
-	l[9] = reverse_rotate_b(NULL, true) - 1;
-	l[10] = reverse_rotate_ab(NULL, NULL, true) - 1;
-	while (i < 11)
-		total = total + l[i++];
+	i = 11;
+	l[0] = store_swap(0)[0];
+	l[1] = store_swap(0)[1];
+	l[2] = store_swap(0)[2];
+	l[3] = store_push(0)[0];
+	l[4] = store_push(0)[1];
+	l[5] = store_rotate(0)[0];
+	l[6] = store_rotate(0)[1];
+	l[7] = store_rotate(0)[2];
+	l[8] = store_rev_rotate(0)[0];
+	l[9] = store_rev_rotate(0)[1];
+	l[10] = store_rev_rotate(0)[2];
+	while (i--)
+		total = total + l[i];
 	ft_printf("%i\n", total);
 	ft_printf("[bench] sa: %i sb: %i ss: %i", l[0], l[1], l[2]);
 	ft_printf("pa: %i pb: %i\n", l[3], l[4]);
@@ -85,38 +85,3 @@ void	ft_print_bench(int algorithm, double dis, bool bench)
 	print_actions();
 	ft_printf("\n");
 }
-
-// void	print_actions(int i, int action, char *name)
-// {
-// 	static int	j = 0;
-
-// 	j = j + (action - 1);
-// 	i++;
-// 	if (i == 1)
-// 		print_actions(i, reverse_rotate_b(NULL, true), "rrb");
-// 	if (i == 2)
-// 		print_actions(i, reverse_rotate_a(NULL, true), "rra");
-// 	if (i == 3)
-// 		print_actions(i, rotate_ab(NULL, NULL, true), "rr");
-// 	if (i == 4)
-// 		print_actions(i, rotate_b(NULL, true), "rb");
-// 	if (i == 5)
-// 		print_actions(i, rotate_a(NULL, true), "ra");
-// 	if (i == 6)
-// 	{
-// 		print_actions(i, push_b(NULL, NULL, true), "pb");
-// 		ft_printf("\n[bench] ");
-// 	}
-// 	if (i == 7)
-// 		print_actions(i, push_a(NULL, NULL, true), "pa");
-// 	if (i == 8)
-// 		print_actions(i, swap_ab(NULL, NULL, true), "ss");
-// 	if (i == 9)
-// 		print_actions(i, swap_b(NULL, true), "sb");
-// 	if (i == 10)
-// 		print_actions(i, swap_a(NULL, true), "sa");
-// 	if (i == 11)
-// 		ft_printf("%i\n[bench] ", j);
-// 	ft_printf("%s: %i ", name, (action - 1));
-// 	return ;
-// }

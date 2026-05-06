@@ -3,14 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   op_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:45 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 12:55:17 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/06 16:22:13 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
+
+int	*store_swap(int type)
+{
+	static int	array[3];
+	static int	sa = 0;
+	static int	sb = 0;
+	static int	ss = 0;
+
+	if (type == 1)
+	{
+		ft_printf("sa\n");
+		sa++;
+	}
+	else if (type == 2)
+	{
+		ft_printf("sb\n");
+		sb++;
+	}
+	else if (type == 3)
+	{
+		ft_printf("ss\n");
+		ss++;
+	}
+	array[0] = sa;
+	array[1] = sb;
+	array[1] = ss;
+	return (array);
+}
 
 static void	swap(t_ab **lst)
 {
@@ -25,36 +53,21 @@ static void	swap(t_ab **lst)
 	temp->content = save;
 }
 
-int	swap_a(t_ab **lst_a, bool bench)
+void	swap_a(t_ab **lst_a)
 {
-	static int	count = 0;
-
 	swap(lst_a);
-	count++;
-	if (!bench)
-		ft_printf("sa\n");
-	return (count);
+	store_swap(1);
 }
 
-int	swap_b(t_ab **lst_b, bool bench)
+void	swap_b(t_ab **lst_b)
 {
-	static int	count = 0;
-
 	swap(lst_b);
-	count++;
-	if (!bench)
-		ft_printf("sb\n");
-	return (count);
+	store_swap(2);
 }
 
-int	swap_ab(t_ab **lst_a, t_ab **lst_b, bool bench)
+void	swap_ab(t_ab **lst_a, t_ab **lst_b)
 {
-	static int	count = 0;
-
 	swap(lst_a);
 	swap(lst_b);
-	count++;
-	if (!bench)
-		ft_printf("ss\n");
-	return (count);
+	store_swap(3);
 }
