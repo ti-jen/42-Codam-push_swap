@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bucket_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 12:55:38 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/06 16:31:42 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ int	sort_medium(t_ab **lst_a, t_ab **lst_b, bool bench, int max)
 	int		scan;
 	int		path;
 	int		min;
+	int		lowest;
 
 	min = max;
+	lowest = ft_find_lowest(*lst_a)->content;
 	scan = 0;
-	while (scan < 50 && min >= 0)
+	while (scan < 50 && min >= lowest)
 	{
 		min = min - 10;
 		scan = ft_scan(*lst_a, max, min);
@@ -93,7 +95,7 @@ void	ft_bucket_sort(t_ab *lst_a, bool bench)
 	lst_b = NULL;
 	max = ft_find_higest(lst_a)->content;
 	path = 0;
-	while (max > 0)
+	while (max > ft_find_lowest(lst_a)->content)
 	{
 		max = sort_medium(&lst_a, &lst_b, bench, max);
 		if (!start)
@@ -108,5 +110,6 @@ void	ft_bucket_sort(t_ab *lst_a, bool bench)
 			sort_simple(&lst_a, &lst_b, bench);
 		path = (lst_a)->content;
 		start = false;
+		// ft_lstprint(lst_a, lst_b);
 	}
 }

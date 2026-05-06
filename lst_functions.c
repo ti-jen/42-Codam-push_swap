@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 12:54:15 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/06 16:31:34 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,20 @@ t_ab	*ft_find_higest(t_ab *lst_a)
 	while (lst_a)
 	{
 		if (lst_a->content > temp->content)
+			temp = lst_a;
+		lst_a = lst_a->next;
+	}
+	return (temp);
+}
+
+t_ab	*ft_find_lowest(t_ab *lst_a)
+{
+	t_ab	*temp;
+
+	temp = lst_a;
+	while (lst_a)
+	{
+		if (lst_a->content < temp->content)
 			temp = lst_a;
 		lst_a = lst_a->next;
 	}

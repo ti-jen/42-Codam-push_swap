@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:12:43 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/29 17:21:41 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 13:32:43 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	print_actions(void)
 	while (i < 11)
 		total = total + l[i++];
 	ft_printf("%i\n", total);
-	ft_printf("[bench] sa: %i sb: %i ss: %i", l[0], l[1], l[2]);
+	ft_printf("[bench] sa: %i sb: %i ss: %i ", l[0], l[1], l[2]);
 	ft_printf("pa: %i pb: %i\n", l[3], l[4]);
-	ft_printf("[bench] ra: %i rb: %i rr: %i", l[5], l[6], l[7]);
+	ft_printf("[bench] ra: %i rb: %i rr: %i ", l[5], l[6], l[7]);
 	ft_printf("rra: %i rrb: %i rrr: %i\n", l[8], l[9], l[10]);
 }
 
@@ -73,7 +73,7 @@ void	ft_print_bench(int algorithm, double dis, bool bench)
 {
 	int	chunk;
 
-	if (!bench)
+	if (bench)
 		return ;
 	ft_printf("[bench] disorder:	");
 	chunk = dis * 10000;
