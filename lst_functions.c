@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 11:56:06 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 12:43:55 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ t_ab	*ft_find_higest(t_ab *lst_a)
 	while (lst_a)
 	{
 		if (lst_a->content > temp->content)
+			temp = lst_a;
+		lst_a = lst_a->next;
+	}
+	return (temp);
+}
+
+t_ab	*ft_find_lowest(t_ab *lst_a)
+{
+	t_ab	*temp;
+
+	temp = lst_a;
+	while (lst_a)
+	{
+		if (lst_a->content < temp->content)
 			temp = lst_a;
 		lst_a = lst_a->next;
 	}
