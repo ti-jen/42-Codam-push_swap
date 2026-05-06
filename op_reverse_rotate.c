@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   op_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:32 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 11:42:08 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 12:54:56 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdbool.h>
 #include "lib_push_swap.h"
-#include "libft/ft_printf/ft_printf.h"
 
 static void	reverse_rotate(t_ab **lst_a)
 {

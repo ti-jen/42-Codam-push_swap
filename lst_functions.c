@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lst_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 11:56:06 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 12:54:15 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 #include "lib_push_swap.h"
-#include "libft/ft_printf/ft_printf.h"
 
 t_ab	*ft_find_higest(t_ab *lst_a)
 {

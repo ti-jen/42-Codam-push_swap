@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bucket_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 11:56:50 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 12:55:38 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "libft/libft.h"
 #include "lib_push_swap.h"
-#include "libft/ft_printf/ft_printf.h"
 
 int	ft_scan(t_ab *lst_a, int max, int min)
 {

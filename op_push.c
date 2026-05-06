@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:25 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/30 17:51:07 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 12:54:45 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "lib_push_swap.h"
-#include "libft/ft_printf/ft_printf.h"
-#include <stdbool.h>
 
 void	fix_id(t_ab *lst)
 {
