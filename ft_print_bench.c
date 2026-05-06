@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:12:43 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:35:48 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 16:39:55 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_print_bench(int algorithm, double dis, bool bench)
 {
 	int	chunk;
 
-	if (bench)
+	if (!bench)
 		return ;
 	ft_printf("[bench] disorder:	");
 	chunk = dis * 10000;
