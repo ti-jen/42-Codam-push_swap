@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:32 by tkroon            #+#    #+#             */
-/*   Updated: 2026/04/30 17:51:32 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/06 11:42:08 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,20 @@ int	reverse_rotate_ab(t_ab **lst_a, t_ab **lst_b, bool bench)
 	if (!bench)
 		ft_printf("rrr\n");
 	return (count);
+}
+
+
+void	reverse_rotate_op(t_ab **lst_a, t_ab **lst_b, bool bench)
+{
+	t_ab *temp;
+	if (!lst_b || !(*lst_b) || !(*lst_b)->next)
+	{
+		reverse_rotate(lst_a);
+		return ;
+	}
+	temp  = ft_find_higest(*lst_b);
+	if((*lst_b)->content == temp->content)
+		reverse_rotate_a(lst_a, bench);
+	else
+		reverse_rotate_ab(lst_a, lst_b, bench);
 }

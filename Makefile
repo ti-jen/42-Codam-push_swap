@@ -10,11 +10,11 @@ ft_lstprint\
 ft_make_lst\
 ft_print_bench\
 ft_bucket_sort\
+lst_functions\
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJ	= $(addsuffix .o, $(SRC))
-INPUT =  8 6 4 1 2 7 3
-
+INPUT = 7 13 2 19 24 5 11 0 16 21 9 3 18 14 6 22 1 10 8 17 12 20 4 15 
 YELLOW  = \033[0;33m
 GREEN = \033[0;32m
 WHITE = \033[0m
