@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:36:10 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/07 12:30:23 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,18 @@ void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 	}
 }
 
+int	bucket_size(t_ab *lst_a)
+{
+	int size;
+	while (lst_a->next)
+		lst_a = lst_a->next;
+	size = lst_a->id / 10;
+	if (size > 10)
+		return(size);
+	else
+		return(10);
+}
+
 int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 {
 	int		scan;
@@ -64,7 +76,7 @@ int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 	min = max;
 	lowest = ft_find_lowest(*lst_a)->content;
 	scan = 0;
-	while (scan < 50 && min >= lowest)
+	while (scan < bucket_size(*lst_a) && min >= lowest)
 	{
 		min = min - 10;
 		scan = ft_scan(*lst_a, max, min);
@@ -110,6 +122,5 @@ void	ft_bucket_sort(t_ab *lst_a)
 			sort_simple(&lst_a, &lst_b);
 		path = (lst_a)->content;
 		start = false;
-		// ft_lstprint(lst_a, lst_b);
 	}
 }
