@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/07 12:30:23 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/10 11:17:21 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,20 @@ void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 
 int	bucket_size(t_ab *lst_a)
 {
-	int size;
+	int	size;
+
 	while (lst_a->next)
 		lst_a = lst_a->next;
 	size = lst_a->id / 10;
 	if (size > 10)
-		return(size);
+		return (size);
 	else
-		return(10);
+		return (10);
 }
 
 int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 {
 	int		scan;
-	int		path;
 	int		min;
 	int		lowest;
 
@@ -83,13 +83,7 @@ int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 	}
 	while (scan)
 	{
-		path = shortest_path(*lst_a, max, min);
-		if (path < 0)
-			while (path++ < 0)
-				reverse_rotate_a(lst_a);
-		else
-			while (path-- > 0)
-				rotate_a(lst_a);
+		shortest_path(lst_a, max, min);
 		push_b(lst_a, lst_b);
 		scan--;
 	}
@@ -111,13 +105,7 @@ void	ft_bucket_sort(t_ab *lst_a)
 	{
 		max = sort_medium(&lst_a, &lst_b, max);
 		if (!start)
-			path = shortest_path(lst_a, path, path - 1);
-		if (path < 0)
-			while (path++ < 0)
-				reverse_rotate_a(&lst_a);
-		else
-			while (path-- > 0)
-				rotate_a(&lst_a);
+			shortest_path(&lst_a, path, path - 1);
 		if (lst_b)
 			sort_simple(&lst_a, &lst_b);
 		path = (lst_a)->content;
