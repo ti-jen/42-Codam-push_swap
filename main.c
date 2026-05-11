@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/11 10:54:24 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/11 12:35:23 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_mode(char *argv)
 			algorithm = 4;
 	}
 	if (!algorithm)
-		printf("Error: Invalid flags\n");
+		ft_printf("Error: Invalid flags\n");
 	isrun = true;
 	return (algorithm);
 }
