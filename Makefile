@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 VALGRIND = valgrind -q --leak-check=full
@@ -14,7 +14,7 @@ lst_functions\
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJ	= $(addsuffix .o, $(SRC))
-INPUT = 7 13 2 19 24 5 11 0 16 21 9 3 18 14 6 22 1 10 8 17 12 20 4 15 
+INPUT = 1 2 3 4 5 6 7  9 10 -100 -50 0 9999
 YELLOW  = \033[0;33m
 GREEN = \033[0;32m
 WHITE = \033[0m

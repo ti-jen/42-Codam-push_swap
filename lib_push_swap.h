@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:58:19 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/11 11:01:56 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_make_lst(t_ab **lst, int i, int argc, char **argv);
 
 int		*store_swap(int type);
 void	swap_a(t_ab **A);
-void		swap_b(t_ab **A);
+void	swap_b(t_ab **A);
 void	swap_ab(t_ab **A, t_ab **B);
 
 int		*store_push(int type);
@@ -57,7 +57,7 @@ void	ft_bucket_sort(t_ab *lst);
 
 t_ab	*ft_find_higest(t_ab *lst_a);
 t_ab	*ft_find_lowest(t_ab *lst_a);
-int	shortest_path(t_ab *lst_a, int max, int min);
+int		shortest_path(t_ab **lst_a, int max, int min);
 void	ft_lstprint(t_ab *A, t_ab *B);
-
+int		checkorder(t_ab *lst_a);
 #endif

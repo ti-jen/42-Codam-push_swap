@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/10 11:16:42 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/11 10:59:47 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,20 @@ int	shortest_path(t_ab **lst_a, int max, int min)
 	else
 		while (rev--)
 			reverse_rotate_a(lst_a);
+	return (1);
+}
+
+int	checkorder(t_ab *lst_a)
+{
+	t_ab	*temp;
+
+	temp = lst_a;
+	while (lst_a->next)
+	{
+		temp = lst_a->next;
+		if (lst_a->content > temp->content)
+			return (0);
+		lst_a = lst_a->next;
+	}
 	return (1);
 }

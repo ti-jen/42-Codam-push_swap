@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:18:45 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/11 10:54:24 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,32 @@ float	compute_disorder(t_ab *lst)
 		}
 		lst = lst->next;
 	}
+	if (!mistakes)
+		return (0);
 	return ((mistakes / total_pairs) + 0.00005);
 }
 
 int	check_mode(char *argv)
 {
-	if (!ft_strncmp(argv, "--simple", 10))
-		return (1);
-	else if (!ft_strncmp(argv, "--medium", 10))
-		return (2);
-	else if (!ft_strncmp(argv, "--complex", 10))
-		return (3);
-	else if (!ft_strncmp(argv, "--adaptive", 10))
-		return (4);
-	printf("Error: Invalid flags\n");
-	return (0);
+	static bool	isrun = false;
+	int			algorithm;
+
+	algorithm = 0;
+	if (!isrun)
+	{
+		if (!ft_strncmp(argv, "--simple", 10))
+			algorithm = 1;
+		else if (!ft_strncmp(argv, "--medium", 10))
+			algorithm = 2;
+		else if (!ft_strncmp(argv, "--complex", 10))
+			algorithm = 3;
+		else if (!ft_strncmp(argv, "--adaptive", 10))
+			algorithm = 4;
+	}
+	if (!algorithm)
+		printf("Error: Invalid flags\n");
+	isrun = true;
+	return (algorithm);
 }
 
 void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
@@ -79,24 +90,24 @@ int	main(int argc, char *argv[])
 	int		i;
 	int		algorithm;
 
+	if (!argv[1])
+		return (1);
 	algorithm = 4;
 	i = 1;
 	bench = false;
 	lst_a = NULL;
-	while (!ft_strncmp(argv[i], "--", 1))
+	while (i < argc && !ft_strncmp(argv[i], "--", 1) && i < 3)
 	{
 		if (!ft_strncmp(argv[i], "--bench", 10))
 			bench = true;
 		else
-		{
 			algorithm = check_mode(argv[i]);
-			if (algorithm == 0)
-				return (0);
-		}
+		if (algorithm == 0)
+			return (0);
 		i++;
 	}
-	ft_make_lst(&lst_a, i, argc, argv);
-	if (lst_a == NULL)
-		return (0);
-	sort_lst(lst_a, algorithm, compute_disorder(lst_a), bench);
+	if (i < argc)
+		ft_make_lst(&lst_a, i, argc, argv);
+	if (lst_a != NULL)
+		sort_lst(lst_a, algorithm, compute_disorder(lst_a), bench);
 }
