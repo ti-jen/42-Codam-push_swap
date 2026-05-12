@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/12 14:13:35 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/12 19:09:04 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	shortest_path(t_ab **lst_a, int max, int min, int dir)
 	rot = 0;
 	rev = 1;
 	temp = *lst_a;
-	while (!(temp->content <= max && temp->content > min))
+	while (!(temp->content <= max && temp->content >= min))
 	{
 		temp = temp->next;
 		if (!temp)
@@ -76,7 +76,7 @@ int	shortest_path(t_ab **lst_a, int max, int min, int dir)
 	rot = temp->id;
 	while (temp->next)
 		temp = temp->next;
-	while (rot && !(temp->content <= max && temp->content > min) && rev++)
+	while (rot && !(temp->content <= max && temp->content >= min) && rev++)
 		temp = temp->prev;
 	if (rot < rev)
 		while (rot--)
