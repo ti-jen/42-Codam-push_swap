@@ -6,7 +6,7 @@
 /*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 21:51:22 by wouter            #+#    #+#             */
-/*   Updated: 2026/05/12 14:51:42 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/12 17:19:43 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void push_select(t_ab **lst_a, t_ab **lst_b, t_ab *push_value)
 			break;
 		}
 		
-		if (location < 2/ num_items)
+		if (location <  num_items / 2)
 			rotate_a(lst_a);
 		else
 			reverse_rotate_a(lst_a);
@@ -137,7 +137,7 @@ void finish_list(t_ab **lst_a, t_ab **lst_b)
 {
 	int lowest;
 	while (*lst_b)
-		push_b(lst_b, lst_a);
+		push_a(lst_a, lst_b);
 	
 	lowest = find_min(*lst_a, find_max(*lst_a)->content)-> content;
 	while(1)
