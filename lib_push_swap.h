@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/11 11:01:56 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/12 18:36:52 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,13 @@ void	reverse_rotate_b(t_ab **A);
 void	reverse_rotate_ab(t_ab **A, t_ab **B);
 
 void	ft_print_bench(int algorithm, double dis, bool bench);
+void	ft_selection_sort(t_ab *lst_a);
 void	ft_bucket_sort(t_ab *lst);
+void	ft_radix_sort(t_ab *lst_a);
 
 t_ab	*ft_find_higest(t_ab *lst_a);
 t_ab	*ft_find_lowest(t_ab *lst_a);
-int		shortest_path(t_ab **lst_a, int max, int min);
+int		shortest_path(t_ab **lst_a, int max, int min, int dir);
 void	ft_lstprint(t_ab *A, t_ab *B);
 int		checkorder(t_ab *lst_a);
 #endif

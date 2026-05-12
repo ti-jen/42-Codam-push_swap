@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/11 10:59:47 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/12 14:13:35 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,25 @@ t_ab	*ft_find_lowest(t_ab *lst_a)
 	return (temp);
 }
 
-int	shortest_path(t_ab **lst_a, int max, int min)
+void	mulrotate(t_ab **lst, int op, int dir)
+{
+	if (op < 0)
+	{
+		if (dir < 0)
+			rotate_a(lst);
+		else
+			reverse_rotate_a(lst);
+	}
+	else
+	{
+		if (dir < 0)
+			rotate_b(lst);
+		else
+			reverse_rotate_b(lst);
+	}
+}
+
+int	shortest_path(t_ab **lst_a, int max, int min, int dir)
 {
 	int		rot;
 	int		rev;
@@ -58,14 +76,14 @@ int	shortest_path(t_ab **lst_a, int max, int min)
 	rot = temp->id;
 	while (temp->next)
 		temp = temp->next;
-	while (!(temp->content <= max && temp->content > min) && rev++)
+	while (rot && !(temp->content <= max && temp->content > min) && rev++)
 		temp = temp->prev;
 	if (rot < rev)
 		while (rot--)
-			rotate_a(lst_a);
+			mulrotate(lst_a, dir, -1);
 	else
 		while (rev--)
-			reverse_rotate_a(lst_a);
+			mulrotate(lst_a, dir, 1);
 	return (1);
 }
 

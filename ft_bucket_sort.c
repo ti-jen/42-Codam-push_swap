@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/11 09:55:53 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/12 14:05:10 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 	}
 	while (scan)
 	{
-		shortest_path(lst_a, max, min);
+		shortest_path(lst_a, max, min, -1);
 		push_b(lst_a, lst_b);
 		scan--;
 	}
@@ -105,7 +105,7 @@ void	ft_bucket_sort(t_ab *lst_a)
 	{
 		max = sort_medium(&lst_a, &lst_b, max);
 		if (!start)
-			shortest_path(&lst_a, path, path - 1);
+			shortest_path(&lst_a, path, path - 1, -1);
 		if (lst_b)
 			sort_simple(&lst_a, &lst_b);
 		path = (lst_a)->content;
