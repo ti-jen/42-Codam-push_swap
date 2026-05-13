@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/11 10:31:29 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/13 10:21:56 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,22 @@ t_ab	*free_all(t_ab *lst, char **split, int j)
 	return (lst);
 }
 
+int	checkifnumber(char *split)
+{
+	int	i;
+
+	i = 0;
+	if (split[i] == '-')
+		i++;
+	while (split[i])
+	{
+		if (!(split[i] >= '0' && split[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	ft_make_lst(t_ab **lst, int i, int argc, char **argv)
 {
 	char				**split;
@@ -90,8 +106,8 @@ void	ft_make_lst(t_ab **lst, int i, int argc, char **argv)
 		{
 			if (split[j])
 				content = ft_atoi(split[j]);
-			if (!split[j] || ((!content && split[j][0] != '0')
-				|| (check_dub(*lst, content))))
+			if (!split[j] || !checkifnumber(split[j])
+				|| (check_dub(*lst, content)))
 			{
 				*lst = free_all(*lst, split, j);
 				return ;
