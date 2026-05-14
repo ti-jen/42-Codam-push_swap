@@ -6,16 +6,16 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 14:37:42 by tkroon            #+#    #+#             */
-/*   Updated: 2026/03/25 14:27:35 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/14 11:47:52 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *nptr)
 {
-	int		i;
-	int		end;
-	int		temp;
-	int		min;
+	int			i;
+	int long	end;
+	int long	temp;
+	int long	min;
 
 	min = 0;
 	i = 0;
@@ -31,6 +31,8 @@ int	ft_atoi(const char *nptr)
 		temp = nptr[i] - '0';
 		end = (end * 10) + temp;
 		i++;
+		if (end > (2147483647 + min))
+			return (0);
 	}
 	if (min == 1)
 		end = -end;

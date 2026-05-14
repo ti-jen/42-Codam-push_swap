@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/12 18:36:52 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/14 10:42:34 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ void	ft_radix_sort(t_ab *lst_a);
 
 t_ab	*ft_find_higest(t_ab *lst_a);
 t_ab	*ft_find_lowest(t_ab *lst_a);
+int		check_dub(t_ab *lst, int content);
+void	ft_intadd_back(t_ab **lst, int content);
+t_ab	*free_lst(t_ab *lst);
 int		shortest_path(t_ab **lst_a, int max, int min, int dir);
 void	ft_lstprint(t_ab *A, t_ab *B);
 int		checkorder(t_ab *lst_a);

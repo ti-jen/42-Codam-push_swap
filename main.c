@@ -6,11 +6,26 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/12 18:54:37 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/14 11:08:13 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
+
+t_ab	*free_lst(t_ab *lst)
+{
+	t_ab	*temp;
+
+	while(lst && lst->prev)
+		lst = lst->prev;
+	while (lst)
+	{
+		temp = lst;
+		lst = lst->next;
+		free(temp);
+	}
+	return (lst);
+}
 
 float	compute_disorder(t_ab *lst)
 {
@@ -55,7 +70,7 @@ int	check_mode(char *argv)
 			algorithm = 4;
 	}
 	if (!algorithm)
-		ft_printf("Error: Invalid flags\n");
+		ft_printf("Error\n");
 	isrun = true;
 	return (algorithm);
 }
@@ -82,6 +97,7 @@ void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 		ft_bucket_sort(lst);
 	else
 		ft_radix_sort(lst);
+	lst = free_lst(lst);
 	ft_print_bench(strat, disorder, bench);
 }
 

@@ -6,24 +6,35 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/12 19:40:03 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/14 11:43:35 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-int	ft_scan(t_ab *lst_a, int max, int min)
+int	ft_scan(t_ab *lst_a, int max, int amount)
 {
-	int	count;
+	int		high;
+	t_ab	*temp;
+	t_ab	*bucket;
 
-	count = 0;
-	while (lst_a)
+	bucket = NULL;
+	while (amount-- && !(high == -2147483648))
 	{
-		if (lst_a->content <= max && lst_a->content >= min)
-			count++;
-		lst_a = lst_a->next;
+		temp = lst_a;
+		high = -2147483648;
+		while (temp)
+		{
+			if (!check_dub(bucket, temp->content)
+				&& temp->content > high && temp->content < max)
+				high = temp->content;
+			temp = temp->next;
+		}
+		ft_intadd_back(&bucket, high);
 	}
-	return (count);
+	high = ft_find_lowest(bucket)->content;
+	bucket = free_lst(bucket);
+	return (high);
 }
 
 void	sort_simple(t_ab **lst_a, t_ab **lst_b)
@@ -60,7 +71,7 @@ int	bucket_size(t_ab *lst_a)
 
 	while (lst_a->next)
 		lst_a = lst_a->next;
-	size = lst_a->id / 10;
+	size = lst_a->id / 8;
 	if (size > 10)
 		return (size);
 	else
@@ -76,17 +87,9 @@ int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 	min = max;
 	lowest = ft_find_lowest(*lst_a)->content;
 	scan = 0;
-	while (scan < bucket_size(*lst_a) && min >= lowest)
-	{
-		min = min - 10;
-		scan = ft_scan(*lst_a, max, min);
-	}
-	while (scan)
-	{
-		shortest_path(lst_a, max, min, -1);
+	min = ft_scan(*lst_a, max, bucket_size(*lst_a));
+	while (shortest_path(lst_a, max, min, -1))
 		push_b(lst_a, lst_b);
-		scan--;
-	}
 	return (min);
 }
 
@@ -95,20 +98,16 @@ void	ft_bucket_sort(t_ab *lst_a)
 	t_ab	*lst_b;
 	int		max;
 	int		path;
-	bool	start;
 
-	start = true;
 	lst_b = NULL;
 	max = ft_find_higest(lst_a)->content;
-	path = 0;
+	path = max;
 	while (!(checkorder(lst_a)))
 	{
-		max = sort_medium(&lst_a, &lst_b, max);
-		if (!start)
-			shortest_path(&lst_a, path, path, -1);
+		max = sort_medium(&lst_a, &lst_b, max - 1);
+		shortest_path(&lst_a, path, path, -1);
 		if (lst_b)
 			sort_simple(&lst_a, &lst_b);
 		path = (lst_a)->content;
-		start = false;
 	}
 }

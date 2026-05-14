@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/13 10:21:56 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/14 11:48:25 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_dub(t_ab *lst, int content)
 {
 	while (lst)
 	{
-		if ((lst->content - content) == 0)
+		if (lst->content == content)
 			return (1);
 		lst = lst->next;
 	}
@@ -60,7 +60,7 @@ t_ab	*free_all(t_ab *lst, char **split, int j)
 {
 	t_ab	*temp;
 
-	ft_printf("Error: Invalid or Double Numbers\n");
+	ft_printf("Error\n");
 	while (lst)
 	{
 		temp = lst;
@@ -76,16 +76,24 @@ t_ab	*free_all(t_ab *lst, char **split, int j)
 	return (lst);
 }
 
-int	checkifnumber(char *split)
+int	checkifnumber(char *split, int content)
 {
-	int	i;
+	int		i;
+	int		j;
 
+	j = 0;
 	i = 0;
+	if (content == 0 && split[i] != '0')
+		return (0);
 	if (split[i] == '-')
-		i++;
-	while (split[i])
 	{
-		if (!(split[i] >= '0' && split[i] <= '9'))
+		j++;
+		if (!split[j])
+			return (0);
+	}
+	while (split[i + j])
+	{
+		if (!(split[i + j] >= '0' && split[i + j] <= '9'))
 			return (0);
 		i++;
 	}
@@ -106,7 +114,7 @@ void	ft_make_lst(t_ab **lst, int i, int argc, char **argv)
 		{
 			if (split[j])
 				content = ft_atoi(split[j]);
-			if (!split[j] || !checkifnumber(split[j])
+			if (!split[j] || !checkifnumber(split[j], content)
 				|| (check_dub(*lst, content)))
 			{
 				*lst = free_all(*lst, split, j);
