@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/14 10:42:34 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/14 16:40:01 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ t_ab	*free_lst(t_ab *lst);
 int		shortest_path(t_ab **lst_a, int max, int min, int dir);
 void	ft_lstprint(t_ab *A, t_ab *B);
 int		checkorder(t_ab *lst_a);
+
+void	finish_list(t_ab **lst_a, t_ab **lst_b);
+t_ab	*find_max(t_ab *lst);
+t_ab	*find_min(t_ab *lst, int highest);
+void	push_select(t_ab **lst_a, t_ab **lst_b, t_ab *push_value);
+int		num_items_lst(t_ab *lst);
+
 #endif
