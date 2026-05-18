@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/14 16:40:01 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/18 13:06:15 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ void	ft_selection_sort(t_ab *lst_a);
 void	ft_bucket_sort(t_ab *lst);
 void	ft_radix_sort(t_ab *lst_a);
 
-t_ab	*ft_find_higest(t_ab *lst_a);
-t_ab	*ft_find_lowest(t_ab *lst_a);
+t_ab	*ft_find_higlow(t_ab *lst_a, bool ishigh);
 int		check_dub(t_ab *lst, int content);
 void	ft_intadd_back(t_ab **lst, int content);
 t_ab	*free_lst(t_ab *lst);
 int		shortest_path(t_ab **lst_a, int max, int min, int dir);
 void	ft_lstprint(t_ab *A, t_ab *B);
 int		checkorder(t_ab *lst_a);
+int		checkorder_f(t_ab *lst_a, int (*f)(int, int, bool), int mult);
 
 void	finish_list(t_ab **lst_a, t_ab **lst_b);
 t_ab	*find_max(t_ab *lst);

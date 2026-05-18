@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/14 11:43:35 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/18 13:05:35 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_scan(t_ab *lst_a, int max, int amount)
 		}
 		ft_intadd_back(&bucket, high);
 	}
-	high = ft_find_lowest(bucket)->content;
+	high = ft_find_higlow(bucket, false)->content;
 	bucket = free_lst(bucket);
 	return (high);
 }
@@ -49,7 +49,7 @@ void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 	length = temp->id;
 	while (*lst_b)
 	{
-		maxid = ft_find_higest(*lst_b)->id;
+		maxid = ft_find_higlow(*lst_b, true)->id;
 		if (maxid < (length / 2))
 		{
 			while (maxid--)
@@ -71,7 +71,7 @@ int	bucket_size(t_ab *lst_a)
 
 	while (lst_a->next)
 		lst_a = lst_a->next;
-	size = lst_a->id / 8;
+	size = lst_a->id / 10;
 	if (size > 10)
 		return (size);
 	else
@@ -85,7 +85,7 @@ int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 	int		lowest;
 
 	min = max;
-	lowest = ft_find_lowest(*lst_a)->content;
+	lowest = ft_find_higlow(*lst_a, false)->content;
 	scan = 0;
 	min = ft_scan(*lst_a, max, bucket_size(*lst_a));
 	while (shortest_path(lst_a, max, min, -1))
@@ -97,17 +97,13 @@ void	ft_bucket_sort(t_ab *lst_a)
 {
 	t_ab	*lst_b;
 	int		max;
-	int		path;
 
 	lst_b = NULL;
-	max = ft_find_higest(lst_a)->content;
-	path = max;
+	max = ft_find_higlow(lst_a, true)->content;
 	while (!(checkorder(lst_a)))
 	{
-		max = sort_medium(&lst_a, &lst_b, max - 1);
-		shortest_path(&lst_a, path, path, -1);
-		if (lst_b)
-			sort_simple(&lst_a, &lst_b);
-		path = (lst_a)->content;
+		while (lst_a->next)
+			max = sort_medium(&lst_a, &lst_b, max - 1);
+		sort_simple(&lst_a, &lst_b);
 	}
 }

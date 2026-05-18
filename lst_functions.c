@@ -6,38 +6,45 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/12 19:09:04 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/18 13:04:34 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-t_ab	*ft_find_higest(t_ab *lst_a)
+t_ab	*ft_find_higlow(t_ab *lst_a, bool ishigh)
 {
 	t_ab	*temp;
 
 	temp = lst_a;
 	while (lst_a)
 	{
-		if (lst_a->content > temp->content)
-			temp = lst_a;
+		if (ishigh)
+		{
+			if (lst_a->content > temp->content)
+				temp = lst_a;
+		}
+		else
+			if (lst_a->content < temp->content)
+				temp = lst_a;
 		lst_a = lst_a->next;
 	}
 	return (temp);
 }
 
-t_ab	*ft_find_lowest(t_ab *lst_a)
+int	checkorder_f(t_ab *lst_a, int (*f)(int, int, bool), int mult)
 {
 	t_ab	*temp;
 
 	temp = lst_a;
-	while (lst_a)
+	while (lst_a->next)
 	{
-		if (lst_a->content < temp->content)
-			temp = lst_a;
+		temp = lst_a->next;
+		if (f(lst_a->content, mult, false) > f(temp->content, mult, false))
+			return (0);
 		lst_a = lst_a->next;
 	}
-	return (temp);
+	return (1);
 }
 
 void	mulrotate(t_ab **lst, int op, int dir)

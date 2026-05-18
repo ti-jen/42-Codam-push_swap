@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/14 11:08:13 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/18 13:05:02 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_ab	*free_lst(t_ab *lst)
 {
 	t_ab	*temp;
 
-	while(lst && lst->prev)
+	while (lst && lst->prev)
 		lst = lst->prev;
 	while (lst)
 	{
