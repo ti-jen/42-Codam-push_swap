@@ -6,13 +6,13 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/18 13:05:35 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 12:03:42 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-int	ft_scan(t_ab *lst_a, int max, int amount)
+static int	ft_scan(t_ab *lst_a, int max, int amount)
 {
 	int		high;
 	t_ab	*temp;
@@ -37,7 +37,7 @@ int	ft_scan(t_ab *lst_a, int max, int amount)
 	return (high);
 }
 
-void	sort_simple(t_ab **lst_a, t_ab **lst_b)
+static void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 {
 	int		maxid;
 	int		length;
@@ -65,7 +65,7 @@ void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 	}
 }
 
-int	bucket_size(t_ab *lst_a)
+static int	bucket_size(t_ab *lst_a)
 {
 	int	size;
 
@@ -78,7 +78,7 @@ int	bucket_size(t_ab *lst_a)
 		return (10);
 }
 
-int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
+static int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 {
 	int		scan;
 	int		min;

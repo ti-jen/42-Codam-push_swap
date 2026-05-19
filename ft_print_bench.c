@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:12:43 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:39:55 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 12:02:01 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft/ft_printf/ft_printf.h"
 #include <stdbool.h>
 
-void	print_algorithm(int algorithm, double dis)
+static void	print_algorithm(int algorithm, double dis)
 {
 	if (algorithm == 1)
 		ft_printf("Simple / ");
@@ -41,7 +41,7 @@ void	print_algorithm(int algorithm, double dis)
 		ft_printf("O(n log n)\n");
 }
 
-void	print_actions(void)
+static void	print_actions(void)
 {
 	int	l[11];
 	int	i;

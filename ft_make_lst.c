@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/14 11:48:25 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 12:02:47 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	check_dub(t_ab *lst, int content)
 	return (0);
 }
 
-t_ab	*free_all(t_ab *lst, char **split, int j)
+static t_ab	*free_all(t_ab *lst, char **split, int j)
 {
 	t_ab	*temp;
 
@@ -76,7 +76,7 @@ t_ab	*free_all(t_ab *lst, char **split, int j)
 	return (lst);
 }
 
-int	checkifnumber(char *split, int content)
+static int	checkifnumber(char *split, int content)
 {
 	int		i;
 	int		j;

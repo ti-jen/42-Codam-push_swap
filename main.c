@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/18 13:05:02 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 12:01:15 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_ab	*free_lst(t_ab *lst)
 	return (lst);
 }
 
-float	compute_disorder(t_ab *lst)
+static float	compute_disorder(t_ab *lst)
 {
 	float	mistakes;
 	float	total_pairs;
@@ -52,7 +52,7 @@ float	compute_disorder(t_ab *lst)
 	return ((mistakes / total_pairs) + 0.00005);
 }
 
-int	check_mode(char *argv)
+static int	check_mode(char *argv)
 {
 	static bool	isrun = false;
 	int			algorithm;
@@ -75,7 +75,7 @@ int	check_mode(char *argv)
 	return (algorithm);
 }
 
-void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
+static void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 {
 	float	disorder;
 	int		strat;

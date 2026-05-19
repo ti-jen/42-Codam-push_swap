@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/18 13:04:34 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 11:59:16 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	checkorder_f(t_ab *lst_a, int (*f)(int, int, bool), int mult)
 	return (1);
 }
 
-void	mulrotate(t_ab **lst, int op, int dir)
+static void	mulrotate(t_ab **lst, int op, int dir)
 {
 	if (op < 0)
 	{
