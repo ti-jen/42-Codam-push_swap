@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/19 12:01:15 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 12:49:10 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int argc, char *argv[])
 	int		algorithm;
 
 	if (!argv[1])
-		return (1);
+		return (0);
 	algorithm = 4;
 	i = 1;
 	bench = false;

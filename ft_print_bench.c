@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:12:43 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/19 12:02:01 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 13:37:36 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	print_algorithm(int algorithm, double dis)
 			algorithm = 3;
 	}
 	if (algorithm == 1)
-		ft_printf("O(n2\n)");
+		ft_printf("O(n2)\n");
 	if (algorithm == 2)
 		ft_printf("O(n√n)\n");
 	if (algorithm == 3)
-		ft_printf("O(n log n)\n");
+		ft_printf("O(nlogn)\n");
 }
 
 static void	print_actions(void)

@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:45 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 17:00:47 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 13:19:22 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	*store_swap(int type)
 	}
 	array[0] = sa;
 	array[1] = sb;
-	array[1] = ss;
+	array[2] = ss;
 	return (array);
 }
 

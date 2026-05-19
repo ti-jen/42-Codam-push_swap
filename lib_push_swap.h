@@ -6,18 +6,18 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/18 13:06:15 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/19 12:42:43 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_PUSH_SWAP_H
 # define LIB_PUSH_SWAP_H
 
-# include <stddef.h>
+// # include <stddef.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
+// # include <stdio.h>
+// # include <stdlib.h>
 # include "libft/libft.h"
 # include "lib_push_swap.h"
 # include "libft/ft_printf/ft_printf.h"
