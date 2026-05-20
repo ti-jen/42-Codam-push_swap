@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 11:40:57 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 15:25:30 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 	lst = cleanlist(lst);
 	if (algorithm == 4)
 	{
-		if (dis < 0.2)
+		if (dis < 0.2 || num_items_lst(lst) < 6)
 			algorithm = 1;
 		else if (dis > 0.2 && dis < 0.5)
 			algorithm = 2;
@@ -93,7 +93,7 @@ static void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 			algorithm = 3;
 	}
 	if (algorithm == 1)
-		ft_selection_sort(lst);
+		ft_bubble_sort(lst);
 	else if (algorithm == 2)
 		ft_bucket_sort(lst);
 	else

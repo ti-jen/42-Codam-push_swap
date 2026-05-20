@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selection_sort_functions.c                         :+:      :+:    :+:   */
+/*   func_sort_selection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 16:43:06 by Wouter Ebbe       #+#    #+#             */
-/*   Updated: 2026/05/14 16:44:53 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/20 15:02:11 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,6 @@ t_ab	*find_max(t_ab *lst)
 		if (lst->content > highest)
 		{
 			highest = lst->content;
-			tmp = lst;
-		}
-		if (lst->next == NULL)
-			break ;
-		lst = lst->next;
-	}
-	return (tmp);
-}
-
-t_ab	*find_min(t_ab *lst, int highest)
-{
-	t_ab	*tmp;
-	int		lowest;
-
-	lowest = highest;
-	if (!lst)
-		return (NULL);
-	if (lst->next == NULL)
-		return (lst);
-	while (1)
-	{
-		if (lst->content < lowest)
-		{
-			lowest = lst->content;
 			tmp = lst;
 		}
 		if (lst->next == NULL)
@@ -92,10 +68,10 @@ int	num_items_lst(t_ab *lst)
 		return (0);
 	while (1)
 	{
+		i++;
 		if (lst->next == NULL)
 			break ;
 		lst = lst->next;
-		i++;
 	}
 	return (i);
 }
@@ -106,7 +82,7 @@ void	finish_list(t_ab **lst_a, t_ab **lst_b)
 
 	while (*lst_b)
 		push_a(lst_a, lst_b);
-	lowest = find_min(*lst_a, find_max(*lst_a)->content)-> content;
+	lowest = find_min(*lst_a)-> content;
 	while (1)
 	{
 		if ((*lst_a)->content == lowest)

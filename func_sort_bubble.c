@@ -1,0 +1,123 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   func_sort_bubble.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/19 20:35:35 by Wouter Ebbe       #+#    #+#             */
+/*   Updated: 2026/05/20 15:19:34 by Wouter Ebbe      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "lib_push_swap.h"
+
+t_ab	*test_nasty(int *nasty_combi, t_ab *list);
+
+void	go_to_loc(t_ab **lst, t_ab *lst_loc)
+{
+	int	loc;
+	int	id;
+	int	num_items;
+
+	loc = lst_loc->content;
+	id = lst_loc->id;
+	num_items = num_items_lst(*lst);
+	if (num_items % 2 == 1)
+		num_items++;
+	while ((*lst)->content != loc)
+	{
+		if (id < num_items / 2)
+			rotate_a(lst);
+		else
+			reverse_rotate_a(lst);
+	}
+}
+
+t_ab	*find_min(t_ab *lst)
+{
+	t_ab	*tmp;
+	int		lowest;
+
+	lowest = find_max(lst)->content;
+	if (!lst)
+		return (NULL);
+	if (lst->next == NULL)
+		return (lst);
+	while (1)
+	{
+		if (lst->content < lowest)
+		{
+			lowest = lst->content;
+			tmp = lst;
+		}
+		if (lst->next == NULL)
+			break ;
+		lst = lst->next;
+	}
+	return (tmp);
+}
+
+t_ab	*nasty_cases(t_ab *lst)
+{
+	t_ab	*lowest;
+	t_ab	*tmp;
+	t_ab	*cont;
+	int		start;
+
+	lowest = lst;
+	start = lst->content;
+	tmp = lowest;
+	while (1)
+	{
+		cont = tmp;
+		if (tmp->next == NULL)
+			tmp = lst;
+		else
+			tmp = tmp->next;
+		if (cont->content == 0 && tmp->content == 4)
+		{
+			return (cont);
+		}
+		if (tmp->content == start)
+			break ;
+	}
+	return (NULL);
+}
+
+t_ab	*nasty_cases2(t_ab *lst)
+{
+	int	nasty_combi[5];
+
+	nasty_combi[0] = 0;
+	nasty_combi[1] = 3;
+	nasty_combi[2] = 4;
+	nasty_combi[3] = 2;
+	nasty_combi[4] = 1;
+	//printf("!!!!!!");
+	return (test_nasty(nasty_combi, lst));
+}
+
+t_ab	*test_nasty(int *nasty_combi, t_ab *list)
+{
+	int		i;
+	int		a;
+	t_ab	*tmp;
+
+	i = 0;
+	a = 0;
+	tmp = list;
+	while (a < 6)
+	{
+		if (tmp->content == nasty_combi[i])
+			i++;
+		if (tmp->next == NULL)
+			tmp = list;
+		else
+			tmp = tmp->next;
+		if (i == 5)
+			break ;
+		a++;
+	}
+	return (find_value(i, list));
+}
