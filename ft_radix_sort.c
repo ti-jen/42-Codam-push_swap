@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 13:08:33 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/19 11:58:14 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 14:20:36 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static void	ft_radix_push_b(t_ab **lst_a, t_ab **lst_b, int mult)
 			temp = temp->next;
 		}
 		shortest_path(lst_a, high->content, high->content, -1);
+		if (checkorder(*lst_a))
+			break ;
 		push_b(lst_a, lst_b);
 	}
 }
@@ -89,19 +91,21 @@ static void	ft_radix_push_b(t_ab **lst_a, t_ab **lst_b, int mult)
 void	ft_radix_sort(t_ab *lst_a)
 {
 	t_ab	*lst_b;
-	t_ab	*temp;
+	int		max;
 	int		mult;
+	bool	iseven;
 
 	lst_b = NULL;
+	iseven = true;
 	mult = 9;
-	temp = lst_a;
-	while (!checkorder(lst_a))
+	max = ft_find_higlow(lst_a, true)->content;
+	while (checkorder_f(lst_a, getnumb, mult))
+		mult--;
+	while (!lst_a || !checkorder(lst_a))
 	{
-		while (checkorder_f(lst_a, getnumb, mult))
-			mult--;
 		ft_radix_push_b(&lst_a, &lst_b, mult--);
-		while (checkorder_f(lst_b, getnumb, mult) && mult > 0)
-			mult--;
+		while (lst_a && max != ft_find_higlow(lst_a, true)->content)
+			push_b(&lst_a, &lst_b);
 		ft_radix_push_a(&lst_a, &lst_b, mult--);
 	}
 }

@@ -6,36 +6,36 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/19 12:03:42 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 13:47:40 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-static int	ft_scan(t_ab *lst_a, int max, int amount)
-{
-	int		high;
-	t_ab	*temp;
-	t_ab	*bucket;
+// static int	ft_scan(t_ab *lst_a, int max, int amount)
+// {
+// 	int		high;
+// 	t_ab	*temp;
+// 	t_ab	*bucket;
 
-	bucket = NULL;
-	while (amount-- && !(high == -2147483648))
-	{
-		temp = lst_a;
-		high = -2147483648;
-		while (temp)
-		{
-			if (!check_dub(bucket, temp->content)
-				&& temp->content > high && temp->content < max)
-				high = temp->content;
-			temp = temp->next;
-		}
-		ft_intadd_back(&bucket, high);
-	}
-	high = ft_find_higlow(bucket, false)->content;
-	bucket = free_lst(bucket);
-	return (high);
-}
+// 	bucket = NULL;
+// 	while (amount-- && !(high == -2147483648))
+// 	{
+// 		temp = lst_a;
+// 		high = -2147483648;
+// 		while (temp)
+// 		{
+// 			if (!check_dub(bucket, temp->content)
+// 				&& temp->content > high && temp->content < max)
+// 				high = temp->content;
+// 			temp = temp->next;
+// 		}
+// 		ft_intadd_back(&bucket, high);
+// 	}
+// 	high = ft_find_higlow(bucket, false)->content;
+// 	bucket = free_lst(bucket);
+// 	return (high);
+// }
 
 static void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 {
@@ -50,7 +50,7 @@ static void	sort_simple(t_ab **lst_a, t_ab **lst_b)
 	while (*lst_b)
 	{
 		maxid = ft_find_higlow(*lst_b, true)->id;
-		if (maxid < (length / 2))
+		if (maxid <= (length / 2))
 		{
 			while (maxid--)
 				rotate_b(lst_b);
@@ -87,7 +87,7 @@ static int	sort_medium(t_ab **lst_a, t_ab **lst_b, int max)
 	min = max;
 	lowest = ft_find_higlow(*lst_a, false)->content;
 	scan = 0;
-	min = ft_scan(*lst_a, max, bucket_size(*lst_a));
+	min = max - bucket_size(*lst_a);
 	while (shortest_path(lst_a, max, min, -1))
 		push_b(lst_a, lst_b);
 	return (min);
