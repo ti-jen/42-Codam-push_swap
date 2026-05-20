@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/19 12:42:43 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 11:04:06 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // # include <stddef.h>
 # include <unistd.h>
 # include <stdbool.h>
-// # include <stdio.h>
+# include <stdio.h>
 // # include <stdlib.h>
 # include "libft/libft.h"
 # include "lib_push_swap.h"
@@ -71,5 +71,6 @@ t_ab	*find_max(t_ab *lst);
 t_ab	*find_min(t_ab *lst, int highest);
 void	push_select(t_ab **lst_a, t_ab **lst_b, t_ab *push_value);
 int		num_items_lst(t_ab *lst);
+t_ab	*cleanlist(t_ab *lst);
 
 #endif

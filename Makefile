@@ -14,6 +14,7 @@ lst_functions\
 ft_radix_sort\
 ft_selection_sort\
 selection_sort_functions\
+ft_cleanlist\
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJ	= $(addsuffix .o, $(SRC))
@@ -26,7 +27,7 @@ all: lib
 
 test: lib 
 	@echo "$(GREEN)Test output:$(WHITE)"
-	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --simple $(INPUT) && make fclean
+	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench $(INPUT) && make fclean
 
 lib: comp ft_lib
 	@ar rcs $(NAME).a $(OBJ)
