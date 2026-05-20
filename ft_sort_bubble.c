@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_bubble.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 13:56:01 by Wouter Ebbe       #+#    #+#             */
-/*   Updated: 2026/05/20 14:57:50 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/20 16:15:39 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
-
-void	return_to_low(t_ab **lst);
-void	bubble_pairs(t_ab **lst, int num_items, int *change);
-t_ab	*checkorder_sp(t_ab *lst);
-void	go_to_loc(t_ab **lst, t_ab *lst_loc);
-t_ab	*closest_error(t_ab *lst);
-t_ab	*nasty_cases(t_ab *lst);
-t_ab	*nasty_cases2(t_ab *lst);
 
 void	ft_bubble_sort(t_ab *lst)
 {
