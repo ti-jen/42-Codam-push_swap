@@ -3,7 +3,6 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 VALGRIND = valgrind -q --leak-check=full
 SRC = 	ft_cleanlist\
-		ft_lstprint\
 		ft_make_lst\
 		ft_print_bench\
 		ft_sort_bubble\
