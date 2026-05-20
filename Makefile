@@ -20,10 +20,11 @@ SRC = 	ft_cleanlist\
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJ	= $(addsuffix .o, $(SRC))
-INPUT = 2 4 1 5 3
 YELLOW  = \033[0;33m
 GREEN = \033[0;32m
 WHITE = \033[0m
+
+
 all: lib
 	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a
 
@@ -48,12 +49,9 @@ clean:
 	@rm $(OBJ) || true
 	@cd libft/ && make clean
 	@cd libft/ft_printf/ && make clean
-	@echo "$(CYAN)[removing $(OBJ)]$(WHITE)"
 
 fclean: clean
 	@rm $(NAME).a || true
 	@cd libft/ && make fclean
-	@cd libft/ft_printf/ && make fclean
-	@echo "$(CYAN)[removing $(NAME).a]$(WHITE)"
 
 re: fclean all
