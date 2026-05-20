@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:32:03 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 11:03:10 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 11:38:55 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,4 @@ void	ft_make_lst(t_ab **lst, int i, int argc, char **argv)
 		}
 		free(split);
 	}
-	*lst = cleanlist(*lst);
 }

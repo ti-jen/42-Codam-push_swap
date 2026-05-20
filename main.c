@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/19 12:49:10 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 11:40:57 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 
 	strat = algorithm;
 	disorder = (compute_disorder(lst));
+	lst = cleanlist(lst);
 	if (algorithm == 4)
 	{
 		if (dis < 0.2)
