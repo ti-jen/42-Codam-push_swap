@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bucket_sort.c                                   :+:      :+:    :+:   */
+/*   ft_sort_bucket.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 11:19:46 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 13:47:40 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 15:39:19 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,11 @@ void	ft_bucket_sort(t_ab *lst_a)
 
 	lst_b = NULL;
 	max = ft_find_higlow(lst_a, true)->content;
+	if (num_items_lst(lst_a) < 6)
+	{
+		ft_bubble_sort(lst_a);
+		return ;
+	}
 	while (!(checkorder(lst_a)))
 	{
 		while (lst_a->next)

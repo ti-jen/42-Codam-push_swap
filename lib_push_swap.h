@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 14:51:51 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/20 15:58:51 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // # include <stddef.h>
 # include <unistd.h>
 # include <stdbool.h>
-# include <stdio.h>
+// # include <stdio.h>
 // # include <stdlib.h>
 # include "libft/libft.h"
 # include "lib_push_swap.h"

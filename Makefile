@@ -26,11 +26,11 @@ YELLOW  = \033[0;33m
 GREEN = \033[0;32m
 WHITE = \033[0m
 all: lib
-	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && make fclean
+	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a
 
-test: lib 
-	@echo "$(GREEN)Test output:$(WHITE)"
-	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --simple $(INPUT) && make fclean
+# test: lib 
+# 	@echo "$(GREEN)Test output:$(WHITE)"
+# 	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --simple $(INPUT) && make fclean
 
 lib: comp ft_lib
 	@ar rcs $(NAME).a $(OBJ)
@@ -47,6 +47,8 @@ ft_lib:
 
 clean:
 	@rm $(OBJ) || true
+	@cd libft/ && make clean
+	@cd libft/ft_printf/ && make clean
 	@echo "$(CYAN)[removing $(OBJ)]$(WHITE)"
 
 fclean: clean

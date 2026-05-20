@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_sort_bubble.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 20:35:35 by Wouter Ebbe       #+#    #+#             */
-/*   Updated: 2026/05/20 15:19:34 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/20 15:46:45 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ t_ab	*nasty_cases2(t_ab *lst)
 	nasty_combi[2] = 4;
 	nasty_combi[3] = 2;
 	nasty_combi[4] = 1;
-	//printf("!!!!!!");
 	return (test_nasty(nasty_combi, lst));
 }
 

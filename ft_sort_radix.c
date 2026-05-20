@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_radix_sort.c                                    :+:      :+:    :+:   */
+/*   ft_sort_radix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/11 13:08:33 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 14:20:36 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/20 16:02:56 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void	ft_radix_push_b(t_ab **lst_a, t_ab **lst_b, int mult)
 	t_ab	*temp;
 	int		mid;
 	int		rhigh;
-	int		rtemp;
 
 	while (*lst_a)
 	{
@@ -74,9 +73,9 @@ static void	ft_radix_push_b(t_ab **lst_a, t_ab **lst_b, int mult)
 		while (temp)
 		{
 			rhigh = getnumb(high->content, mult, false);
-			rtemp = getnumb(temp->content, mult, false);
-			if ((rhigh > rtemp)
-				|| (rhigh >= rtemp && (mid - getnumb(high->id, 0, true))
+			if ((rhigh > getnumb(temp->content, mult, false))
+				|| (rhigh >= getnumb(temp->content, mult, false)
+					&& (mid - getnumb(high->id, 0, true))
 					< (mid - getnumb(temp->id, 0, true))))
 				high = temp;
 			temp = temp->next;
@@ -101,6 +100,11 @@ void	ft_radix_sort(t_ab *lst_a)
 	max = ft_find_higlow(lst_a, true)->content;
 	while (checkorder_f(lst_a, getnumb, mult))
 		mult--;
+	if (mult <= 0)
+	{
+		ft_bubble_sort(lst_a);
+		return ;
+	}
 	while (!lst_a || !checkorder(lst_a))
 	{
 		ft_radix_push_b(&lst_a, &lst_b, mult--);

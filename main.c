@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:16:05 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 15:25:30 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/05/20 15:40:26 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	sort_lst(t_ab *lst, int algorithm, float dis, bool bench)
 	lst = cleanlist(lst);
 	if (algorithm == 4)
 	{
-		if (dis < 0.2 || num_items_lst(lst) < 6)
+		if (dis < 0.2)
 			algorithm = 1;
 		else if (dis > 0.2 && dis < 0.5)
 			algorithm = 2;
