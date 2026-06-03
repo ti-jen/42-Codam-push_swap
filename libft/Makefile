@@ -1,69 +1,81 @@
-CC = gcc
-NAME = libft
+# Compile and flags
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = ft_atoi\
-ft_bzero\
-ft_calloc\
-ft_isalnum\
-ft_isalpha\
-ft_isascii\
-ft_isdigit\
-ft_isprint\
-ft_itoa\
-ft_lstadd_back\
-ft_lstadd_front\
-ft_lstclear\
-ft_lstdelone\
-ft_lstiter\
-ft_lstlast\
-ft_lstmap\
-ft_lstnew\
-ft_lstsize\
-ft_memchr\
-ft_memcmp\
-ft_memcpy\
-ft_memmove\
-ft_memset\
-ft_putchar_fd\
-ft_putnbr_fd\
-ft_putstr_fd\
-ft_split\
-ft_strchr\
-ft_strdup\
-ft_striteri\
-ft_strjoin\
-ft_strlcat\
-ft_strlcpy\
-ft_strlen\
-ft_strmapi\
-ft_strncmp\
-ft_strnstr\
-ft_strrchr\
-ft_strtrim\
-ft_substr\
-ft_tolower\
-ft_toupper\
 
 
-SRCS = $(addsuffix .c, $(SRC))
-OBJ	= $(addsuffix .o, $(SRC))
+# Variable for setting name of the libary we want to create
+NAME = libft.a
 
-all: ar
+# Sourcefiles and defered objects = compiled files
+SRCS =  ft_bzero.c\
+        ft_isascii.c\
+		ft_memcpy.c\
+		ft_strlen.c\
+		ft_isalnum.c\
+		ft_isdigit.c\
+		ft_memset.c\
+		ft_isalpha.c\
+		ft_isprint.c\
+		ft_strlcpy.c\
+		ft_toupper.c\
+		ft_tolower.c\
+		ft_strchr.c\
+		ft_strlcat.c\
+		ft_strrchr.c\
+		ft_strncmp.c\
+		ft_memchr.c\
+		ft_memcmp.c\
+		ft_memmove.c\
+		ft_atoi.c\
+		ft_calloc.c\
+		ft_strnstr.c\
+		ft_strdup.c\
+		ft_strjoin.c\
+		ft_substr.c\
+		ft_strtrim.c\
+		ft_split.c\
+		ft_itoa.c\
+		ft_strmapi.c\
+		ft_striteri.c\
+		ft_putchar_fd.c\
+		ft_putstr_fd.c\
+		ft_putendl_fd.c\
+		ft_putnbr_fd.c\
+		ft_lstnew.c\
+		ft_lstsize.c\
+		ft_lstlast.c\
+		ft_lstadd_back.c\
+		ft_lstadd_front.c\
+		ft_lstdelone.c\
+		ft_lstclear.c\
+		ft_lstiter.c\
+		ft_lstmap.c
 
-# final: lib
-# 	$(CC) $(CFLAGS) $(NAME).c -L. $(NAME).a
 
 
-ar: comp
-	ar rcs $(NAME).a $(OBJ)
+OBJS = $(SRCS:.c=.o) # derived objects get name of c-source with .o extion
 
-comp:
-	$(CC) $(CFLAGS) -c $(SRCS)
+# Target: Prerequisites
+# Default target
+all: $(NAME)
 
+# Work from the end product to the start
+# For the step of creating he library it is first necessary all derived object are created
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+# Compile each .c file into a .o -> For objects to br made c-files are needed.
+%.o: %.c
+
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean up object files
 clean:
-	rm $(OBJ) || true
+	rm -f $(OBJS)
 
 fclean: clean
-	rm $(NAME).a || true
+	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
