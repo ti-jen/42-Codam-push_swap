@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 15:58:51 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/06/03 10:21:43 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ typedef struct int_list
 
 void	fix_id(t_ab *A);
 void	ft_make_lst(t_ab **lst, int i, int argc, char **argv);
-int		*store_swap(int type);
+int		*store_swap(int type, bool isprint);
 void	swap_a(t_ab **A);
 void	swap_b(t_ab **A);
 void	swap_ab(t_ab **A, t_ab **B);
-int		*store_push(int type);
+int		*store_push(int type, bool isprint);
 void	push_a(t_ab **A,	t_ab **B);
 void	push_b(t_ab **A,	t_ab **B);
-int		*store_rotate(int type);
+int		*store_rotate(int type, bool isprint);
 void	rotate_a(t_ab **A);
 void	rotate_b(t_ab **A);
 void	rotate_ab(t_ab **A, t_ab **B);
-int		*store_rev_rotate(int type);
+int		*store_rev_rotate(int type, bool isprint);
 void	reverse_rotate_a(t_ab **A);
 void	reverse_rotate_b(t_ab **A);
 void	reverse_rotate_ab(t_ab **A, t_ab **B);
@@ -74,5 +74,7 @@ t_ab	*nasty_cases(t_ab *lst);
 t_ab	*nasty_cases2(t_ab *lst);
 void	ft_bubble_sort(t_ab *lst);
 t_ab	*find_value(int i, t_ab *list);
+void	ft_sort_quick(t_ab *lst_a);
+void	ft_lstprint(t_ab *A, t_ab *B);
 
 #endif

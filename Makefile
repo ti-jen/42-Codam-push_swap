@@ -16,21 +16,23 @@ SRC = 	ft_cleanlist\
 		op_push\
 		op_reverse_rotate\
 		op_rotate\
-		op_swap
+		op_swap\
+		ft_sort_quick\
+		ft_lstprint\
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJ	= $(addsuffix .o, $(SRC))
 YELLOW  = \033[0;33m
 GREEN = \033[0;32m
 WHITE = \033[0m
-
+INPUT =  5 4 1 3 2
 
 all: lib
 	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a
 
-# test: lib 
-# 	@echo "$(GREEN)Test output:$(WHITE)"
-# 	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --simple $(INPUT) && make fclean
+test: lib 
+	@echo "$(GREEN)Test output:$(WHITE)"
+	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --complex $(INPUT) && make fclean
 
 lib: comp ft_lib
 	@ar rcs $(NAME).a $(OBJ)

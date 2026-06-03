@@ -6,7 +6,7 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 12:12:43 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/19 13:37:36 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/28 15:49:16 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ static void	print_actions(void)
 
 	total = 0;
 	i = 11;
-	l[0] = store_swap(0)[0];
-	l[1] = store_swap(0)[1];
-	l[2] = store_swap(0)[2];
-	l[3] = store_push(0)[0];
-	l[4] = store_push(0)[1];
-	l[5] = store_rotate(0)[0];
-	l[6] = store_rotate(0)[1];
-	l[7] = store_rotate(0)[2];
-	l[8] = store_rev_rotate(0)[0];
-	l[9] = store_rev_rotate(0)[1];
-	l[10] = store_rev_rotate(0)[2];
+	l[0] = store_swap(0, true)[0];
+	l[1] = store_swap(0, true)[1];
+	l[2] = store_swap(0, true)[2];
+	l[3] = store_push(0, true)[0];
+	l[4] = store_push(0, true)[1];
+	l[5] = store_rotate(0, true)[0];
+	l[6] = store_rotate(0, true)[1];
+	l[7] = store_rotate(0, true)[2];
+	l[8] = store_rev_rotate(0, true)[0];
+	l[9] = store_rev_rotate(0, true)[1];
+	l[10] = store_rev_rotate(0, true)[2];
 	while (i--)
 		total = total + l[i];
 	ft_printf("%i\n", total);

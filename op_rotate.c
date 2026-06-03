@@ -6,34 +6,34 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:39 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 17:00:27 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/28 15:34:54 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-int	*store_rotate(int type)
+int	*store_rotate(int type, bool isprint)
 {
 	static int	array[3];
 	static int	ra = 0;
 	static int	rb = 0;
 	static int	rr = 0;
+	static bool	print = true;
 
-	if (type == 1)
-	{
+	if (print && !isprint)
+		print = false ;
+	if (print && type == 1)
 		write(1, "ra\n", 3);
-		ra++;
-	}
-	else if (type == 2)
-	{
+	else if (print && type == 2)
 		write(1, "rb\n", 3);
-		rb++;
-	}
-	else if (type == 3)
-	{
+	else if (print && type == 3)
 		write(1, "rr\n", 3);
+	if (type == 1)
+		ra++;
+	else if (type == 2)
+		rb++;
+	else if (type == 3)
 		rr++;
-	}
 	array[0] = ra;
 	array[1] = rb;
 	array[2] = rr;
@@ -68,18 +68,18 @@ static void	rotate(t_ab **lst)
 void	rotate_a(t_ab **lst_a)
 {
 	rotate(lst_a);
-	store_rotate(1);
+	store_rotate(1, true);
 }
 
 void	rotate_b(t_ab **lst_b)
 {
 	rotate(lst_b);
-	store_rotate(2);
+	store_rotate(2, true);
 }
 
 void	rotate_ab(t_ab **lst_a, t_ab **lst_b)
 {
 	rotate(lst_a);
 	rotate(lst_b);
-	store_rotate(3);
+	store_rotate(3, true);
 }

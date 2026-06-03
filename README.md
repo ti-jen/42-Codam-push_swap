@@ -70,25 +70,23 @@ Bucket sort was chosen because it is easy to understand and performs well for me
 ### How it works
 
 1. The program checks the size of the list.
-2. It divides the list size by `10` to determine the bucket size.
+2. It divides the list size by n√ to determine the bucket size.
 3. The highest values are pushed into `lst_b` in groups (buckets).
 4. This process repeats until `lst_a` is empty.
 5. Finally, a simple selection sort is used to move the numbers back into `lst_a` in sorted order.
 
 ---
 
-## Radix Sort (MSD)
+## Quick Sort
 
-Radix Sort (MSD) was chosen because it efficiently groups larger numbers together while sorting, reducing unnecessary rotations through the list.
+Quick sort was chosen because it is an efficient sorting algorithm, especially for push_swap.
 
 ### How it works
 
-1. The algorithm checks the highest significant digit.
-2. If the current digit is `0`, it moves to the next digit.
-3. Numbers are sorted based on the current digit and pushed to `lst_b`.
-4. The same process is repeated in `lst_b` using the next digit.
-5. Numbers are pushed back to `lst_a`.
-6. This repeats until the entire list is sorted.
+1. The program calculates a pivot by adding the lowest and highest values and dividing the result by 2.
+2. All values lower than the pivot are pushed to `lst_b`.
+3. This process is repeated recursively until only 2 numbers remain.
+4. The algorithm then returns to the previous partitions and repeats the same process on the remaining elements until the entire array is sorted.
 
 ---
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_functions.c                                    :+:      :+:    :+:   */
+/*   func_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 11:50:58 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/20 13:16:16 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/28 13:19:17 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,7 @@ int	shortest_path(t_ab **lst_a, int max, int min, int dir)
 int	checkorder(t_ab *lst_a)
 {
 	t_ab	*temp;
-	t_ab	*save;
 
-	save = lst_a;
 	temp = lst_a;
 	while (lst_a->next)
 	{

@@ -6,28 +6,29 @@
 /*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:15:25 by tkroon            #+#    #+#             */
-/*   Updated: 2026/05/06 16:59:26 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/05/28 15:41:57 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
 
-int	*store_push(int type)
+int	*store_push(int type, bool isprint)
 {
 	static int	array[2];
 	static int	pa = 0;
 	static int	pb = 0;
+	static bool	print = true;
 
-	if (type == 1)
-	{
+	if (print && !isprint)
+		print = false ;
+	if (print && type == 1)
 		write(1, "pa\n", 3);
-		pa++;
-	}
-	else if (type == 2)
-	{
+	else if (print && type == 2)
 		write(1, "pb\n", 3);
+	if (type == 1)
+		pa++;
+	else if (type == 2)
 		pb++;
-	}
 	array[0] = pa;
 	array[1] = pb;
 	return (array);
@@ -75,11 +76,11 @@ static void	push(t_ab **lst_a,	t_ab **lst_b)
 void	push_a(t_ab **lst_a, t_ab **lst_b)
 {
 	push(lst_b, lst_a);
-	store_push(1);
+	store_push(1, true);
 }
 
 void	push_b(t_ab **lst_a, t_ab **lst_b)
 {
 	push(lst_a, lst_b);
-	store_push(2);
+	store_push(2, true);
 }
