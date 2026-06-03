@@ -15,7 +15,8 @@ SRC = 	ft_cleanlist\
 		op_push\
 		op_reverse_rotate\
 		op_rotate\
-		op_swap
+		op_swap\
+		ft_sort_quick
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(SRCS:.c=.o)
@@ -32,7 +33,7 @@ all: $(NAME)
 # 	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --simple $(INPUT) && make fclean
 
 $(NAME): $(OBJS) ft_lib
-	ar rcs $(NAME) $(OBJ)
+	ar rcs $(NAME) $(OBJS)
 	echo "$(YELLOW)[compiling push_swap]$(WHITE)"
 
 %.o: %.c

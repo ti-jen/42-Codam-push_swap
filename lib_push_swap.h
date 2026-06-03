@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/06/03 10:21:43 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/06/03 14:39:59 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct int_list
 	struct int_list	*next;
 }	t_ab;
 
+void	ft_bubble_sort(t_ab *lst);
 void	fix_id(t_ab *A);
 void	ft_make_lst(t_ab **lst, int i, int argc, char **argv);
 int		*store_swap(int type, bool isprint);
@@ -56,7 +57,6 @@ int		check_dub(t_ab *lst, int content);
 void	ft_intadd_back(t_ab **lst, int content);
 t_ab	*free_lst(t_ab *lst);
 int		shortest_path(t_ab **lst_a, int max, int min, int dir);
-void	ft_lstprint(t_ab *A, t_ab *B);
 int		checkorder(t_ab *lst_a);
 int		checkorder_f(t_ab *lst_a, int (*f)(int, int, bool), int mult);
 void	finish_list(t_ab **lst_a, t_ab **lst_b);
@@ -72,9 +72,8 @@ void	go_to_loc(t_ab **lst, t_ab *lst_loc);
 t_ab	*closest_error(t_ab *lst);
 t_ab	*nasty_cases(t_ab *lst);
 t_ab	*nasty_cases2(t_ab *lst);
-void	ft_bubble_sort(t_ab *lst);
 t_ab	*find_value(int i, t_ab *list);
 void	ft_sort_quick(t_ab *lst_a);
-void	ft_lstprint(t_ab *A, t_ab *B);
+t_ab	*test_nasty(int *nasty_combi, t_ab *list);
 
 #endif

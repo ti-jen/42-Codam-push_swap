@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   func_sort_bubble.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 20:35:35 by Wouter Ebbe       #+#    #+#             */
-/*   Updated: 2026/05/20 15:46:45 by tkroon           ###   ########.fr       */
+/*   Updated: 2026/06/03 14:30:53 by Wouter Ebbe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_push_swap.h"
-
-t_ab	*test_nasty(int *nasty_combi, t_ab *list);
 
 void	go_to_loc(t_ab **lst, t_ab *lst_loc)
 {
@@ -119,4 +117,20 @@ t_ab	*test_nasty(int *nasty_combi, t_ab *list)
 		a++;
 	}
 	return (find_value(i, list));
+}
+
+t_ab	*find_value(int i, t_ab *list)
+{
+	if (i == 5)
+	{
+		while (1)
+		{
+			if (list->content == 1)
+				return (list);
+			if (list->next == NULL)
+				break ;
+			list = list->next;
+		}
+	}
+	return (NULL);
 }
