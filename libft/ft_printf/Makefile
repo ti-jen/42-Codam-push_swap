@@ -1,5 +1,5 @@
 CC = gcc
-NAME = libftprintf
+NAME = libftprintf.a
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_putchar \
@@ -15,24 +15,24 @@ ft_itoa\
 ft_strlcpy\
 
 SRCS = $(addsuffix .c, $(SRC))
-OBJ	= $(addsuffix .o, $(SRC))
+OBJS = $(SRCS:.c=.o)
 
-
-all: lib
+all: $(NAME)
 
 # test: lib
 # 	$(CC) $(CFLAGS) test.c -L. $(NAME).a
 
-lib: comp 
-	ar rcs $(NAME).a $(OBJ)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+	echo "$(YELLOW)[compiling push_swap]$(WHITE)"
 
-comp: 
-	$(CC) $(CFLAGS) -c $(SRCS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm $(OBJ) || true
+	rm -f $(OBJS) 
 
 fclean: clean
-	rm $(NAME).a || true
+	rm -f $(NAME).a
 
 re: fclean all
