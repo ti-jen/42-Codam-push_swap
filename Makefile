@@ -1,5 +1,5 @@
 CC = cc
-NAME = push_swap
+NAME = push_swap.a
 CFLAGS = -Wall -Wextra -Werror
 VALGRIND = valgrind -q --leak-check=full
 SRC = 	ft_cleanlist\
@@ -11,49 +11,51 @@ SRC = 	ft_cleanlist\
 		ft_sort_selection\
 		func_lst\
 		func_sort_bubble\
-		func_sort_bubble2\
 		func_sort_selection\
 		op_push\
 		op_reverse_rotate\
 		op_rotate\
-		op_swap\
-		ft_sort_quick\
-		ft_lstprint\
+		op_swap
 
 SRCS = $(addsuffix .c, $(SRC))
-OBJ	= $(addsuffix .o, $(SRC))
+OBJS = $(SRCS:.c=.o)
+
+INPUT = 2 4 1 5 3
 YELLOW  = \033[0;33m
 GREEN = \033[0;32m
 WHITE = \033[0m
-INPUT =  5 4 1 3 2
+all: $(NAME)
+	$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME) libft/libft.a libft/ft_printf/libftprintf.a
 
-all: lib
-	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a
+# test: lib 
+# 	@echo "$(GREEN)Test output:$(WHITE)"
+# 	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --simple $(INPUT) && make fclean
 
-test: lib 
-	@echo "$(GREEN)Test output:$(WHITE)"
-	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --complex $(INPUT) && make fclean
+$(NAME): $(OBJS) ft_lib
+	ar rcs $(NAME) $(OBJ)
+	echo "$(YELLOW)[compiling push_swap]$(WHITE)"
 
-lib: comp ft_lib
-	@ar rcs $(NAME).a $(OBJ)
-	@echo "$(YELLOW)[compiling push_swap]$(WHITE)"
-
-comp: 
-	@$(CC) $(CFLAGS) -c $(SRCS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 ft_lib:
-	@cd libft/ && make all
-	@echo "$(YELLOW)[compiling libft]$(WHITE)"
-	@cd libft/ft_printf/ && make all
-	@echo "$(YELLOW)[compiling ft_printf]$(WHITE)"
+	cd libft/ && make all
+	echo "$(YELLOW)[compiling libft]$(WHITE)"
+	cd libft/ft_printf/ && make all
+	echo "$(YELLOW)[compiling ft_printf]$(WHITE)"
 
 clean:
-	@rm $(OBJ) || true
-	@cd libft/ && make clean
-	@cd libft/ft_printf/ && make clean
+	rm -f $(OBJS)
+	cd libft/ && make clean
+	cd libft/ft_printf/ && make clean
+	echo "$(CYAN)[removing $(OBJ)]$(WHITE)"
 
 fclean: clean
-	@rm $(NAME).a || true
-	@cd libft/ && make fclean
+	rm -f $(NAME)
+	cd libft/ && make fclean
+	cd libft/ft_printf/ && make fclean
+	echo "$(CYAN)[removing $(NAME).a]$(WHITE)"
 
 re: fclean all
+
+.PHONY: all clean fclean re
