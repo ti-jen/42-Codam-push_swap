@@ -11,12 +11,14 @@ SRC = 	ft_cleanlist\
 		ft_sort_selection\
 		func_lst\
 		func_sort_bubble\
+		func_sort_bubble2\
 		func_sort_selection\
 		op_push\
 		op_reverse_rotate\
 		op_rotate\
 		op_swap\
 		ft_sort_quick
+
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(SRCS:.c=.o)
