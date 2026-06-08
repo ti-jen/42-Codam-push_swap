@@ -57,11 +57,17 @@ disorder ≥ 50%
 
 # Algorithms
 
-## Selection Sort
+## Selection sort
+Selection sort was chosen because it it was mandatory to implement a simple sorting algorithm. It is a good place to start making an sorting algorithm.
 
-(text here)
+### How it works
+Selection sort is a basic sort algorithm that looks up the highest and lowest value in the list and pushes booth values to list b. List b rotates each time in such a way that the lowest value goes to the bottom of the list and the highest to the top of the list. After all values are pushed from list a to b the whole list is pushed to list a and the lowest value is rotated to the top. Many functions of selections sort are used for bubble sort.
 
----
+## Bubble Sort
+Bubble sort was chosen because tweaking it is very doable.
+
+### How it works
+The simple sort is based on bubble sort algorithm and is tweaked so that it works with less operations. Bubble sort is a simple sorting algorithm that compares two values and swaps values if the first value is bigger then te next. It goes trough the list as many times as is necessary to sort the list. The tweaks that where implemented are choosing the shortest route to a discrepancy in the list, a function that checks if a list is ordered but the lowest value is not at the top of the list, the function rotates the list to the lowest function. Also some functions that help solve certain specific sets of values.
 
 ## Bucket Sort
 
