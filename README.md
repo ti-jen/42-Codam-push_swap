@@ -173,13 +173,23 @@ Example output:
 
 # Resources
 
-* [Push Swap Visualizer](https://push-swap42-visualizer.vercel.app/?utm_source=chatgpt.com)
-* [ChatGPT](https://chatgpt.com/?utm_source=chatgpt.com)
-* [Push Swap Tester](https://github.com/gemartin99/Push-Swap-Tester?utm_source=chatgpt.com)
-* [GeeksforGeeks — Sorting Algorithms](https://www.geeksforgeeks.org/dsa/sorting-algorithms/?utm_source=chatgpt.com)
+* [Push Swap Visualizer](https://push-swap42-visualizer.vercel.app)
+* [ChatGPT](https://chatgpt.com)
+* [Push Swap Tester](https://github.com/gemartin99/Push-Swap-Tester)
+* [GeeksforGeeks — Sorting Algorithms](https://www.geeksforgeeks.org/dsa/sorting-algorithms/)
 
 ---
 
 # AI Usage
 
 AI was used to help create this README file and assist with explaining certain algorithms.
+
+---
+
+# Contributions per learner
+
+### Tijn
+worked on setting up the functions to setup the list for soriting and error management. also workend on the medium bucket sort and complex quick sort. 
+
+### Wouter
+Worked on bubble sort and selection sort. 

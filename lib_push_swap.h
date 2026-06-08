@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib_push_swap.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Wouter Ebbers <webbers@student.codam.nl    +#+  +:+       +#+        */
+/*   By: tkroon <tkroon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:34:38 by tkroon            #+#    #+#             */
-/*   Updated: 2026/06/03 14:39:59 by Wouter Ebbe      ###   ########.fr       */
+/*   Updated: 2026/06/08 12:36:45 by tkroon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	reverse_rotate_ab(t_ab **A, t_ab **B);
 void	ft_print_bench(int algorithm, double dis, bool bench);
 void	ft_selection_sort(t_ab *lst_a);
 void	ft_bucket_sort(t_ab *lst);
-void	ft_radix_sort(t_ab *lst_a);
 t_ab	*ft_find_higlow(t_ab *lst_a, bool ishigh);
 int		check_dub(t_ab *lst, int content);
 void	ft_intadd_back(t_ab **lst, int content);

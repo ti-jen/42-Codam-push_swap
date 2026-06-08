@@ -7,7 +7,6 @@ SRC = 	ft_cleanlist\
 		ft_print_bench\
 		ft_sort_bubble\
 		ft_sort_bucket\
-		ft_sort_radix\
 		ft_sort_selection\
 		func_lst\
 		func_sort_bubble\
@@ -57,7 +56,7 @@ fclean: clean
 	rm -f $(NAME)
 	cd libft/ && make fclean
 	cd libft/ft_printf/ && make fclean
-	echo "$(CYAN)[removing $(NAME).a]$(WHITE)"
+	echo "$(CYAN)[removing $(NAME)]$(WHITE)"
 
 re: fclean all
 
