@@ -22,42 +22,33 @@ SRC = 	ft_cleanlist\
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(SRCS:.c=.o)
 
-INPUT = 2 4 1 5 3
-YELLOW  = \033[0;33m
-GREEN = \033[0;32m
-WHITE = \033[0m
-all: $(NAME)
+all: $(EXEC_FILE)
+
+$(EXEC_FILE): $(NAME) libft/libft.a libft/ft_printf/libftprintf.a
 	$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME) libft/libft.a libft/ft_printf/libftprintf.a
 
-# test: lib 
-# 	@echo "$(GREEN)Test output:$(WHITE)"
-# 	@$(CC) $(CFLAGS) main.c -o push_swap -L. $(NAME).a libft/libft.a libft/ft_printf/libftprintf.a && ./push_swap --bench --simple $(INPUT) && make fclean
-
-$(NAME): $(OBJS) ft_lib
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
-	echo "$(YELLOW)[compiling push_swap]$(WHITE)"
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-ft_lib:
-	cd libft/ && make all
-	echo "$(YELLOW)[compiling libft]$(WHITE)"
-	cd libft/ft_printf/ && make all
-	echo "$(YELLOW)[compiling ft_printf]$(WHITE)"
+libft/libft.a: libft
+	cd libft/ && $(MAKE)
+
+libft/ft_printf/libftprintf.a: libftprintf
+	cd libft/ft_printf/ && $(MAKE)
 
 clean:
 	rm -f $(OBJS)
 	cd libft/ && make clean
 	cd libft/ft_printf/ && make clean
-	echo "$(CYAN)[removing $(OBJ)]$(WHITE)"
 
 fclean: clean
 	rm -f $(NAME)
 	cd libft/ && make fclean
 	cd libft/ft_printf/ && make fclean
-	echo "$(CYAN)[removing $(NAME)]$(WHITE)"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft libftprintf
