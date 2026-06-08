@@ -189,7 +189,7 @@ AI was used to help create this README file and assist with explaining certain a
 # Contributions per learner
 
 ### Tijn
-worked on setting up the functions to setup the list for soriting and error management. also workend on the medium bucket sort and complex quick sort. 
+worked on setting up the functions to setup the list for sorting and error management. also workend on the medium bucket sort and complex quick sort. 
 
 ### Wouter
-Worked on bubble sort and selection sort. 
+Worked on bubble sort and selection sort. Also worked on improvements makefile.

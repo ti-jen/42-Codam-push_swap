@@ -1,5 +1,6 @@
 CC = cc
 NAME = push_swap.a
+EXEC_FILE = push_swap
 CFLAGS = -Wall -Wextra -Werror
 VALGRIND = valgrind -q --leak-check=full
 SRC = 	ft_cleanlist\
